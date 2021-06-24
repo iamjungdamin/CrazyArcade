@@ -6,19 +6,21 @@ int main()
 {
 	RenderWindow window(sf::VideoMode(500, 500), "Window");
 	
-	RectangleShape rs;
+	Sprite sp;
+	Texture tx;
+	tx.loadFromFile("Textures/hi.png");
 
-	rs.setFillColor(Color::Green);
-	rs.setSize(Vector2f(100.f, 100.f));
-	rs.setPosition(Vector2f(250.f, 250.f));
-	rs.setOrigin(rs.getSize() / 2.f);
+	sp.setScale(1.2f, 1.2f);
+	sp.setOrigin(tx.getSize().x / 2.f, tx.getSize().y / 2.f);
+	sp.setTexture(tx);
+	sp.setPosition(250.f, 250.f);
 
 	while (window.isOpen())
 	{
 		window.clear();
 
-		//rs.setPosition(rs.getPosition().x + .5f, rs.getPosition().y);
-		window.draw(rs);
+		window.draw(sp);
+
 		window.display();
 	}
 }
