@@ -19,7 +19,10 @@ void Engine::Init()
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	obj = new AnimationObject;
+	AnimationObject* obj1 = new AnimationObject;
+	obj1->setPosition(100.f, 0.f);
+	obj.push_back(obj1);
+	obj.push_back(new AnimationObject);
 }
 
 void Engine::Destroy()
@@ -81,8 +84,9 @@ void Engine::Update()
 {
 	deltaTime = timer.getElapsedTime().asSeconds();
 
-	obj->Update(deltaTime);
-
+	for (auto& o : obj) {
+		o->Update(deltaTime);
+	}
 	timer.restart();
 	Input();
 }
@@ -93,7 +97,12 @@ void Engine::Render()
 	{
 		window->clear();
 		Update();
-		window->draw(*obj);
+
+		for (auto& o : obj)
+		{
+			window->draw(*o);
+		}
+
 		window->display();
 	}
 }
