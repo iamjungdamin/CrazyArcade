@@ -1,6 +1,9 @@
 #pragma once
-//게임 전체를 이르는 클래스
 
+//전방선언
+class AnimationObject;
+
+//게임 전체를 이르는 클래스
 class Engine final
 {
 public:
@@ -13,6 +16,8 @@ private:
 
 	Clock timer;
 	float deltaTime = 0.f;
+
+	AnimationObject* obj = nullptr;
 
 private:
 	void Init();

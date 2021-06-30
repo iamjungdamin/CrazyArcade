@@ -16,6 +16,15 @@
     <Filter Include="소스 파일\00. Engine">
       <UniqueIdentifier>{6daa4768-72d1-48d0-b526-bffe231c6a9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Object">
+      <UniqueIdentifier>{c39ac167-9b3a-4273-a96b-4ec8f7c37cc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\00. Object">
+      <UniqueIdentifier>{b0ccf465-569d-47ef-95da-0fd3067ec23e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\01. AnimationObject">
+      <UniqueIdentifier>{c1f4619a-564c-407b-8d2a-c86da3f362a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,13 +33,25 @@
     <ClCompile Include="Engine.cpp">
       <Filter>소스 파일\00. Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>소스 파일\01. Object\00. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationObject.cpp">
+      <Filter>소스 파일\01. Object\01. AnimationObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine.h">
+      <Filter>소스 파일\00. Engine</Filter>
+    </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>소스 파일\00. Engine</Filter>
+    <ClInclude Include="Object.h">
+      <Filter>소스 파일\01. Object\00. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationObject.h">
+      <Filter>소스 파일\01. Object\01. AnimationObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "Engine.h"
+#include "AnimationObject.h"
 
 Engine::Engine()
 {
@@ -13,10 +14,12 @@ Engine::~Engine()
 void Engine::Init()
 {
 	this->window = new RenderWindow(VideoMode(500, 500), "Window");
-	window->setMouseCursorVisible(false);
+	window->setMouseCursorVisible(true);
 	Image icon;
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
+	obj = new AnimationObject;
 }
 
 void Engine::Destroy()
@@ -77,6 +80,10 @@ void Engine::Input()
 void Engine::Update()
 {
 	deltaTime = timer.getElapsedTime().asSeconds();
+
+	obj->Update(deltaTime);
+
+	timer.restart();
 	Input();
 }
 
@@ -86,6 +93,7 @@ void Engine::Render()
 	{
 		window->clear();
 		Update();
+		window->draw(*obj);
 		window->display();
 	}
 }
