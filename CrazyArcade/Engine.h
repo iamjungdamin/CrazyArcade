@@ -14,10 +14,12 @@ private:
 	Clock timer;
 	float deltaTime = 0.f;
 
-public:
+private:
 	void Init();
-	void Destroy();
 	void Input();
 	void Update();
+
+public:
+	void Destroy();
 	void Render();
 };
