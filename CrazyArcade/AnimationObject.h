@@ -6,7 +6,7 @@ public:
 	AnimationObject();
 	virtual ~AnimationObject();
 
-private:
+protected:
 	vector<Texture*> vAnimation;
 	size_t keyFrame = 0;
 

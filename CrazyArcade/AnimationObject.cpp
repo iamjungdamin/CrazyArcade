@@ -13,20 +13,15 @@ AnimationObject::~AnimationObject()
 
 void AnimationObject::Init()
 {
-	Texture* tx = nullptr;
-
-	char filePath[50];
-	for (int i = 32; i < 36; ++i)
-	{
-		sprintf(filePath, "Textures/cookie0020x2/cookie0020x2_00%d.png", i);
-		tx = new Texture;
-		tx->loadFromFile(filePath);
-		this->vAnimation.push_back(tx);
-	}
 }
 
 void AnimationObject::Destroy()
 {
+	for (auto& i : vAnimation)
+	{
+		delete i;
+	}
+	vAnimation.clear();
 }
 
 void AnimationObject::Update(const float& deltaTime)

@@ -25,6 +25,18 @@
     <Filter Include="소스 파일\01. Object\01. AnimationObject">
       <UniqueIdentifier>{c1f4619a-564c-407b-8d2a-c86da3f362a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Object\01. AnimationObject\00. AnimationObject">
+      <UniqueIdentifier>{2a35ae7b-15d6-480b-826a-2cf2455e92b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\01. AnimationObject\01. Character">
+      <UniqueIdentifier>{a35350f2-65c3-4972-8c02-1edeb89f2da6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Object\01. AnimationObject\02. Bubble">
+      <UniqueIdentifier>{3d12203f-4e30-42bb-8624-d1cb0b8e079b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. Scene">
+      <UniqueIdentifier>{0e4264e5-4452-458e-a971-5b5cecff78df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,8 +48,17 @@
     <ClCompile Include="Object.cpp">
       <Filter>소스 파일\01. Object\00. Object</Filter>
     </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>소스 파일\01. Object\01. AnimationObject\01. Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Bubble.cpp">
+      <Filter>소스 파일\01. Object\01. AnimationObject\02. Bubble</Filter>
+    </ClCompile>
     <ClCompile Include="AnimationObject.cpp">
-      <Filter>소스 파일\01. Object\01. AnimationObject</Filter>
+      <Filter>소스 파일\01. Object\01. AnimationObject\00. AnimationObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일\01. Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -50,8 +71,17 @@
     <ClInclude Include="Object.h">
       <Filter>소스 파일\01. Object\00. Object</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>소스 파일\01. Object\01. AnimationObject\01. Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Bubble.h">
+      <Filter>소스 파일\01. Object\01. AnimationObject\02. Bubble</Filter>
+    </ClInclude>
     <ClInclude Include="AnimationObject.h">
-      <Filter>소스 파일\01. Object\01. AnimationObject</Filter>
+      <Filter>소스 파일\01. Object\01. AnimationObject\00. AnimationObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>소스 파일\01. Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

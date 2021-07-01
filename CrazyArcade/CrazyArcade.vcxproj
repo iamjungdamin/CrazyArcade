@@ -143,15 +143,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnimationObject.cpp" />
+    <ClCompile Include="Bubble.cpp" />
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationObject.h" />
+    <ClInclude Include="Bubble.h" />
+    <ClInclude Include="Character.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

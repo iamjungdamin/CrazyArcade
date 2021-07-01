@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "Engine.h"
-#include "AnimationObject.h"
+#include "Scene.h"
 
 Engine::Engine()
 {
@@ -13,16 +13,18 @@ Engine::~Engine()
 
 void Engine::Init()
 {
-	this->window = new RenderWindow(VideoMode(500, 500), "Window");
+	this->window = new RenderWindow(VideoMode(800, 600), "Crazy Arcade");
 	window->setMouseCursorVisible(true);
+
+	//Texture bgtx;
+	//bgtx.loadFromFile("Image/BackGround.png");
+	//bg.setTexture(bgtx);
+
 	Image icon;
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	AnimationObject* obj1 = new AnimationObject;
-	obj1->setPosition(100.f, 0.f);
-	obj.push_back(obj1);
-	obj.push_back(new AnimationObject);
+	this->scene = new Scene;
 }
 
 void Engine::Destroy()
@@ -46,8 +48,8 @@ void Engine::Input()
 		case Event::KeyPressed:
 			switch (evt.key.code)
 			{
-			case Keyboard::A:
-				cout << "Pressed A key !!\n";
+			case Keyboard::Escape:
+				window->close();
 				break;
 
 			default:
@@ -58,37 +60,14 @@ void Engine::Input()
 			break;
 		}
 	}
-
-	// Keyboard Input
-	if (Keyboard::isKeyPressed(Keyboard::Escape))
-	{
-		window->close();
-	}
-
-	// Mouse Input
-	if (Mouse::isButtonPressed(Mouse::Left))
-	{
-		window->setTitle("Left Click");
-	}
-	else if (Mouse::isButtonPressed(Mouse::Right))
-	{
-		window->setTitle("Right Click");
-	}
-	else
-	{
-		window->setTitle("Window");
-	}
 }
 
 void Engine::Update()
 {
 	deltaTime = timer.getElapsedTime().asSeconds();
-
-	for (auto& o : obj) {
-		o->Update(deltaTime);
-	}
 	timer.restart();
 	Input();
+	this->scene->Update(deltaTime);
 }
 
 void Engine::Render()
@@ -97,12 +76,7 @@ void Engine::Render()
 	{
 		window->clear();
 		Update();
-
-		for (auto& o : obj)
-		{
-			window->draw(*o);
-		}
-
+		scene->Render(window);
 		window->display();
 	}
 }
