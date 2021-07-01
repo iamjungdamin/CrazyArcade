@@ -144,7 +144,9 @@
   <ItemGroup>
     <ClCompile Include="AnimationObject.cpp" />
     <ClCompile Include="Bubble.cpp" />
+    <ClCompile Include="BubbleScene.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="CharacterScene.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -153,7 +155,9 @@
   <ItemGroup>
     <ClInclude Include="AnimationObject.h" />
     <ClInclude Include="Bubble.h" />
+    <ClInclude Include="BubbleScene.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="CharacterScene.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Object.h" />

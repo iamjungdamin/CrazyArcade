@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "Engine.h"
-#include "Scene.h"
+#include "CharacterScene.h"
+#include "BubbleScene.h"
 
 Engine::Engine()
 {
@@ -23,8 +24,8 @@ void Engine::Init()
 	Image icon;
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-
-	this->scene = new Scene;
+	
+	this->scenes.push(new Scene);
 }
 
 void Engine::Destroy()
@@ -52,6 +53,20 @@ void Engine::Input()
 				window->close();
 				break;
 
+			case Keyboard::A:
+				this->scenes.push(new CharacterScene);
+				cout << "New Scene : CharacterScene\n";
+				break;
+			
+			case Keyboard::S:
+				this->scenes.push(new BubbleScene);
+				cout << "New Scene : BubbleScene\n";
+				break;
+
+			case Keyboard::Q:
+				scenes.top()->EndScene();
+				break;
+
 			default:
 				break;
 			}
@@ -67,7 +82,22 @@ void Engine::Update()
 	deltaTime = timer.getElapsedTime().asSeconds();
 	timer.restart();
 	Input();
-	this->scene->Update(deltaTime);
+	if (!scenes.empty())
+	{
+		scenes.top()->Update(deltaTime);
+
+		if (this->scenes.top()->GetQuit())
+		{
+			// 현재 실행중인 scene을 종료한다
+			delete this->scenes.top();
+			this->scenes.pop();
+			cout << "Pop Scene\n";
+		}
+	}
+	else
+	{
+		window->close();
+	}
 }
 
 void Engine::Render()
@@ -76,7 +106,14 @@ void Engine::Render()
 	{
 		window->clear();
 		Update();
-		scene->Render(window);
+		if (!scenes.empty())
+		{
+			scenes.top()->Render(window);
+		}
+		else
+		{
+			window->close();
+		}
 		window->display();
 	}
 }

@@ -16,7 +16,7 @@ private:
 	Clock timer;
 	float deltaTime = 0.f;
 
-	Scene* scene = nullptr;
+	stack<Scene*> scenes;
 
 private:
 	void Init();

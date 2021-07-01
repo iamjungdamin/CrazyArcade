@@ -1,10 +1,14 @@
 #include "framework.h"
 #include "Scene.h"
 #include "Object.h"
-#include "Character.h"
-#include "Bubble.h"
 
 Scene::Scene()
+{
+	Init();
+}
+
+Scene::Scene(stack<Scene*>* scenes)
+	:scenes(scenes)	//부모클래스의 생성자를 그대로 사용해라
 {
 	Init();
 }
@@ -15,8 +19,16 @@ Scene::~Scene()
 
 void Scene::Init()
 {
-	vObjects.push_back(new Character);
-	vObjects.push_back(new Bubble);
+}
+
+bool Scene::GetQuit() const
+{
+	return quit;
+}
+
+void Scene::EndScene()
+{
+	quit = true;
 }
 
 void Scene::Update(const float& deltaTime)

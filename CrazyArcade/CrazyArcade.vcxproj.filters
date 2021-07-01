@@ -13,29 +13,38 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\00. Engine">
+    <Filter Include="소스 파일\01. Engine">
       <UniqueIdentifier>{6daa4768-72d1-48d0-b526-bffe231c6a9c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Object">
+    <Filter Include="소스 파일\03. Object">
       <UniqueIdentifier>{c39ac167-9b3a-4273-a96b-4ec8f7c37cc8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Object\00. Object">
+    <Filter Include="소스 파일\03. Object\00. Object">
       <UniqueIdentifier>{b0ccf465-569d-47ef-95da-0fd3067ec23e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Object\01. AnimationObject">
+    <Filter Include="소스 파일\03. Object\01. AnimationObject">
       <UniqueIdentifier>{c1f4619a-564c-407b-8d2a-c86da3f362a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Object\01. AnimationObject\00. AnimationObject">
+    <Filter Include="소스 파일\03. Object\01. AnimationObject\00. AnimationObject">
       <UniqueIdentifier>{2a35ae7b-15d6-480b-826a-2cf2455e92b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Object\01. AnimationObject\01. Character">
+    <Filter Include="소스 파일\02. Scene">
+      <UniqueIdentifier>{0e4264e5-4452-458e-a971-5b5cecff78df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\00. Scene">
+      <UniqueIdentifier>{b3c2d04d-db65-4089-8639-57fb9cabdf48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\01. AnimationObject\02. Character">
       <UniqueIdentifier>{a35350f2-65c3-4972-8c02-1edeb89f2da6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Object\01. AnimationObject\02. Bubble">
+    <Filter Include="소스 파일\03. Object\01. AnimationObject\03. Bubble">
       <UniqueIdentifier>{3d12203f-4e30-42bb-8624-d1cb0b8e079b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01. Scene">
-      <UniqueIdentifier>{0e4264e5-4452-458e-a971-5b5cecff78df}</UniqueIdentifier>
+    <Filter Include="소스 파일\02. Scene\01. CharacterScene">
+      <UniqueIdentifier>{0b67a873-9c40-4c72-a837-f6f56536d4a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\02. BubbleScene">
+      <UniqueIdentifier>{441c2f8c-e7a7-4237-a2a5-d5901e67ffc1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -43,45 +52,57 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
-      <Filter>소스 파일\00. Engine</Filter>
+      <Filter>소스 파일\01. Engine</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>소스 파일\01. Object\00. Object</Filter>
+      <Filter>소스 파일\03. Object\00. Object</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
-      <Filter>소스 파일\01. Object\01. AnimationObject\01. Character</Filter>
+      <Filter>소스 파일\03. Object\01. AnimationObject\02. Character</Filter>
     </ClCompile>
     <ClCompile Include="Bubble.cpp">
-      <Filter>소스 파일\01. Object\01. AnimationObject\02. Bubble</Filter>
+      <Filter>소스 파일\03. Object\01. AnimationObject\03. Bubble</Filter>
     </ClCompile>
     <ClCompile Include="AnimationObject.cpp">
-      <Filter>소스 파일\01. Object\01. AnimationObject\00. AnimationObject</Filter>
+      <Filter>소스 파일\03. Object\01. AnimationObject\00. AnimationObject</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>소스 파일\01. Scene</Filter>
+      <Filter>소스 파일\02. Scene\00. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterScene.cpp">
+      <Filter>소스 파일\02. Scene\01. CharacterScene</Filter>
+    </ClCompile>
+    <ClCompile Include="BubbleScene.cpp">
+      <Filter>소스 파일\02. Scene\02. BubbleScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
-      <Filter>소스 파일\00. Engine</Filter>
+      <Filter>소스 파일\01. Engine</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>소스 파일\01. Object\00. Object</Filter>
+      <Filter>소스 파일\03. Object\00. Object</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>소스 파일\01. Object\01. AnimationObject\01. Character</Filter>
+      <Filter>소스 파일\03. Object\01. AnimationObject\02. Character</Filter>
     </ClInclude>
     <ClInclude Include="Bubble.h">
-      <Filter>소스 파일\01. Object\01. AnimationObject\02. Bubble</Filter>
+      <Filter>소스 파일\03. Object\01. AnimationObject\03. Bubble</Filter>
     </ClInclude>
     <ClInclude Include="AnimationObject.h">
-      <Filter>소스 파일\01. Object\01. AnimationObject\00. AnimationObject</Filter>
+      <Filter>소스 파일\03. Object\01. AnimationObject\00. AnimationObject</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>소스 파일\01. Scene</Filter>
+      <Filter>소스 파일\02. Scene\00. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterScene.h">
+      <Filter>소스 파일\02. Scene\01. CharacterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="BubbleScene.h">
+      <Filter>소스 파일\02. Scene\02. BubbleScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
