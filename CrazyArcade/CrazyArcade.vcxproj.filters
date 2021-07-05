@@ -46,6 +46,21 @@
     <Filter Include="소스 파일\02. Scene\02. BubbleScene">
       <UniqueIdentifier>{441c2f8c-e7a7-4237-a2a5-d5901e67ffc1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02. Scene\01. Login">
+      <UniqueIdentifier>{74cf9d2a-38a8-4b13-8860-9c59809e6340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\02. Wating">
+      <UniqueIdentifier>{b126fea1-fad9-45b7-9a31-6024f149b0b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\03. Gaming">
+      <UniqueIdentifier>{773a6661-cd0d-4a4a-9d6a-4320cc4e492f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\02. BackgroundObject">
+      <UniqueIdentifier>{cf65d5bd-e518-4866-8c06-48a41b2408e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\04. secondCharacter">
+      <UniqueIdentifier>{b7d22ac1-b1a2-458e-bd3f-24b3e6141935}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -75,6 +90,21 @@
     <ClCompile Include="BubbleScene.cpp">
       <Filter>소스 파일\02. Scene\02. BubbleScene</Filter>
     </ClCompile>
+    <ClCompile Include="LoginScene.cpp">
+      <Filter>소스 파일\02. Scene\01. Login</Filter>
+    </ClCompile>
+    <ClCompile Include="WaitingScene.cpp">
+      <Filter>소스 파일\02. Scene\02. Wating</Filter>
+    </ClCompile>
+    <ClCompile Include="GamingScene.cpp">
+      <Filter>소스 파일\02. Scene\03. Gaming</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundObject.cpp">
+      <Filter>소스 파일\03. Object\02. BackgroundObject</Filter>
+    </ClCompile>
+    <ClCompile Include="secondCharacter.cpp">
+      <Filter>소스 파일\03. Object\04. secondCharacter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -103,6 +133,21 @@
     </ClInclude>
     <ClInclude Include="BubbleScene.h">
       <Filter>소스 파일\02. Scene\02. BubbleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginScene.h">
+      <Filter>소스 파일\02. Scene\01. Login</Filter>
+    </ClInclude>
+    <ClInclude Include="WaitingScene.h">
+      <Filter>소스 파일\02. Scene\02. Wating</Filter>
+    </ClInclude>
+    <ClInclude Include="GamingScene.h">
+      <Filter>소스 파일\02. Scene\03. Gaming</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundObject.h">
+      <Filter>소스 파일\03. Object\02. BackgroundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="secondCharacter.h">
+      <Filter>소스 파일\03. Object\04. secondCharacter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

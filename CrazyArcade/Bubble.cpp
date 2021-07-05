@@ -22,7 +22,7 @@ void Bubble::Init()
 		tx->loadFromFile(filePath);
 		this->vAnimation.push_back(tx);
 	}
-	setPosition(Vector2f(200.f, 200.f));
+	setPosition(Vector2f(178.f, 200.f));
 }
 
 void Bubble::Destroy()

@@ -1,7 +1,8 @@
 #include "framework.h"
 #include "Engine.h"
-#include "CharacterScene.h"
-#include "BubbleScene.h"
+#include "LoginScene.h"
+#include "WaitingScene.h"
+#include "GamingScene.h"
 
 Engine::Engine()
 {
@@ -16,10 +17,6 @@ void Engine::Init()
 {
 	this->window = new RenderWindow(VideoMode(800, 600), "Crazy Arcade");
 	window->setMouseCursorVisible(true);
-
-	//Texture bgtx;
-	//bgtx.loadFromFile("Image/BackGround.png");
-	//bg.setTexture(bgtx);
 
 	Image icon;
 	icon.loadFromFile("Textures/icon.jpg");
@@ -54,13 +51,18 @@ void Engine::Input()
 				break;
 
 			case Keyboard::A:
-				this->scenes.push(new CharacterScene);
-				cout << "New Scene : CharacterScene\n";
+				this->scenes.push(new LoginScene);
+				cout << "New Scene : LoginScene\n";
 				break;
 			
 			case Keyboard::S:
-				this->scenes.push(new BubbleScene);
-				cout << "New Scene : BubbleScene\n";
+				this->scenes.push(new WaitingScene);
+				cout << "New Scene : WatingScene\n";
+				break;
+
+			case Keyboard::D:
+				this->scenes.push(new GamingScene);
+				cout << "New Scene : GamingScene\n";
 				break;
 
 			case Keyboard::Q:
