@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "LoginScene.h"
 #include "BackgroundObject.h"
+#include "WaitingScene.h"
 
 LoginScene::LoginScene()
 {
@@ -20,6 +21,27 @@ LoginScene::~LoginScene()
 void LoginScene::Init()
 {
 	vObjects.push_back(new BackgroundObject("Image/login.png"));
+}
+
+void LoginScene::Destroy()
+{
+}
+
+void LoginScene::Input(Event* e)
+{
+	switch (e->key.code)
+	{
+	case Keyboard::Escape:
+		scenes->top()->EndScene();
+		break;
+
+	case Keyboard::Enter:
+		scenes->push(new WaitingScene(scenes));
+		break;
+
+	default:
+		break;
+	}
 }
 
 void LoginScene::Update(const float& deltaTime)

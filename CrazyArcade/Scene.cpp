@@ -31,6 +31,10 @@ void Scene::EndScene()
 	quit = true;
 }
 
+void Scene::Input(Event* e)
+{
+}
+
 void Scene::Update(const float& deltaTime)
 {
 	for (auto& obj : vObjects)

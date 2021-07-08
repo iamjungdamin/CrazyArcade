@@ -40,12 +40,6 @@
     <Filter Include="소스 파일\03. Object\01. AnimationObject\03. Bubble">
       <UniqueIdentifier>{3d12203f-4e30-42bb-8624-d1cb0b8e079b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02. Scene\01. CharacterScene">
-      <UniqueIdentifier>{0b67a873-9c40-4c72-a837-f6f56536d4a8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\02. Scene\02. BubbleScene">
-      <UniqueIdentifier>{441c2f8c-e7a7-4237-a2a5-d5901e67ffc1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\02. Scene\01. Login">
       <UniqueIdentifier>{74cf9d2a-38a8-4b13-8860-9c59809e6340}</UniqueIdentifier>
     </Filter>
@@ -60,6 +54,12 @@
     </Filter>
     <Filter Include="소스 파일\03. Object\04. secondCharacter">
       <UniqueIdentifier>{b7d22ac1-b1a2-458e-bd3f-24b3e6141935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\99. CharacterScene">
+      <UniqueIdentifier>{0b67a873-9c40-4c72-a837-f6f56536d4a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\99. BubbleScene">
+      <UniqueIdentifier>{441c2f8c-e7a7-4237-a2a5-d5901e67ffc1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -85,10 +85,10 @@
       <Filter>소스 파일\02. Scene\00. Scene</Filter>
     </ClCompile>
     <ClCompile Include="CharacterScene.cpp">
-      <Filter>소스 파일\02. Scene\01. CharacterScene</Filter>
+      <Filter>소스 파일\02. Scene\99. CharacterScene</Filter>
     </ClCompile>
     <ClCompile Include="BubbleScene.cpp">
-      <Filter>소스 파일\02. Scene\02. BubbleScene</Filter>
+      <Filter>소스 파일\02. Scene\99. BubbleScene</Filter>
     </ClCompile>
     <ClCompile Include="LoginScene.cpp">
       <Filter>소스 파일\02. Scene\01. Login</Filter>
@@ -129,10 +129,10 @@
       <Filter>소스 파일\02. Scene\00. Scene</Filter>
     </ClInclude>
     <ClInclude Include="CharacterScene.h">
-      <Filter>소스 파일\02. Scene\01. CharacterScene</Filter>
+      <Filter>소스 파일\02. Scene\99. CharacterScene</Filter>
     </ClInclude>
     <ClInclude Include="BubbleScene.h">
-      <Filter>소스 파일\02. Scene\02. BubbleScene</Filter>
+      <Filter>소스 파일\02. Scene\99. BubbleScene</Filter>
     </ClInclude>
     <ClInclude Include="LoginScene.h">
       <Filter>소스 파일\02. Scene\01. Login</Filter>

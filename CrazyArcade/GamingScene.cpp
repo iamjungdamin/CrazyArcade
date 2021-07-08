@@ -32,6 +32,14 @@ void GamingScene::Init()
 	vObjects.push_back(new Bubble);
 }
 
+void GamingScene::Destory()
+{
+}
+
+void GamingScene::Input(Event* e)
+{
+}
+
 void GamingScene::Update(const float& deltaTime)
 {
 	Scene::Update(deltaTime);

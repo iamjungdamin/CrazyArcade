@@ -1,8 +1,6 @@
 #include "framework.h"
 #include "Engine.h"
 #include "LoginScene.h"
-#include "WaitingScene.h"
-#include "GamingScene.h"
 
 Engine::Engine()
 {
@@ -22,7 +20,7 @@ void Engine::Init()
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	
-	this->scenes.push(new Scene);
+	this->scenes.push(new LoginScene(&scenes));
 }
 
 void Engine::Destroy()
@@ -44,34 +42,11 @@ void Engine::Input()
 			break;
 
 		case Event::KeyPressed:
-			switch (evt.key.code)
+			if (!scenes.empty())
 			{
-			case Keyboard::Escape:
-				window->close();
-				break;
-
-			case Keyboard::A:
-				this->scenes.push(new LoginScene);
-				cout << "New Scene : LoginScene\n";
-				break;
-			
-			case Keyboard::S:
-				this->scenes.push(new WaitingScene);
-				cout << "New Scene : WatingScene\n";
-				break;
-
-			case Keyboard::D:
-				this->scenes.push(new GamingScene);
-				cout << "New Scene : GamingScene\n";
-				break;
-
-			case Keyboard::Q:
-				scenes.top()->EndScene();
-				break;
-
-			default:
-				break;
+				scenes.top()->Input(&evt);
 			}
+			break;
 
 		default:
 			break;
