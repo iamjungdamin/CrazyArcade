@@ -20,7 +20,7 @@ LoginScene::~LoginScene()
 
 void LoginScene::Init()
 {
-	vObjects.push_back(new BackgroundObject("Image/login.png"));
+	vObjects.push_back(new BackgroundObject("Image/Bg/login.png"));
 }
 
 void LoginScene::Destroy()

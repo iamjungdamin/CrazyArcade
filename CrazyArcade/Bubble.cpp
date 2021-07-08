@@ -17,7 +17,7 @@ void Bubble::Init()
 	char filePath[50];
 	for (int i = 0; i < 4; i++)
 	{
-		sprintf(filePath, "Image/bubble%02d.png", i);
+		sprintf(filePath, "Image/Bubble/bubble%02d.png", i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
 		this->vAnimation.push_back(tx);

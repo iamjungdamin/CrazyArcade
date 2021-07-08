@@ -22,7 +22,7 @@ void WaitingScene::Init()
 {
 	music.openFromFile("Sound/waiting.wav");
 	music.play();
-	vObjects.push_back(new BackgroundObject("Image/Waiting.png"));
+	vObjects.push_back(new BackgroundObject("Image/Bg/Waiting.png"));
 }
 
 void WaitingScene::Destory()

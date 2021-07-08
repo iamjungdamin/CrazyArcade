@@ -25,7 +25,7 @@ void GamingScene::Init()
 	music.openFromFile("Sound/patritmap.wav");
 	music.play();
 
-	vObjects.push_back(new BackgroundObject("Image/BackGround.png"));
+	vObjects.push_back(new BackgroundObject("Image/Bg/BackGround.png"));
 	vObjects.push_back(new Character);
 	vObjects.push_back(new secondCharacter);
 	vObjects.push_back(new Bubble);
