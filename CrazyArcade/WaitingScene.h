@@ -8,6 +8,9 @@ public:
 	~WaitingScene();
 
 private:
+	Music music;
+
+private:
 	virtual void Init();
 
 public:

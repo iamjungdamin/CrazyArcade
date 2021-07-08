@@ -20,10 +20,8 @@ WaitingScene::~WaitingScene()
 
 void WaitingScene::Init()
 {
-	//Music waiting;
-	//waiting.openFromFile("Sound/waiting.wav");
-	//waiting.play();
-
+	music.openFromFile("Sound/waiting.wav");
+	music.play();
 	vObjects.push_back(new BackgroundObject("Image/Waiting.png"));
 }
 
@@ -40,6 +38,7 @@ void WaitingScene::Input(Event* e)
 		break;
 
 	case Keyboard::F5:
+		music.stop();
 		scenes->push(new GamingScene);
 		break;
 

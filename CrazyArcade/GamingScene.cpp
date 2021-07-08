@@ -22,9 +22,8 @@ GamingScene::~GamingScene()
 
 void GamingScene::Init()
 {
-	//Music gaming;
-	//gaming.openFromFile("Sound/patritmap.wav");
-	//gaming.play();
+	music.openFromFile("Sound/patritmap.wav");
+	music.play();
 
 	vObjects.push_back(new BackgroundObject("Image/BackGround.png"));
 	vObjects.push_back(new Character);

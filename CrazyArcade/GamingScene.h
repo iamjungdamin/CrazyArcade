@@ -8,6 +8,9 @@ public:
 	~GamingScene();
 
 private:
+	Music music;
+
+private:
 	virtual void Init();
 
 public:
