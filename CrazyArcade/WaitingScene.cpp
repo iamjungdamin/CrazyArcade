@@ -2,6 +2,7 @@
 #include "WaitingScene.h"
 #include "BackgroundObject.h"
 #include "GamingScene.h"
+#include "ResultScene.h"
 
 WaitingScene::WaitingScene()
 {
@@ -21,7 +22,7 @@ WaitingScene::~WaitingScene()
 void WaitingScene::Init()
 {
 	music.openFromFile("Sound/waiting.wav");
-	music.play();
+	//music.play();
 	vObjects.push_back(new BackgroundObject("Image/Bg/Waiting.png"));
 }
 
@@ -39,7 +40,8 @@ void WaitingScene::Input(Event* e)
 
 	case Keyboard::F5:
 		music.stop();
-		scenes->push(new GamingScene);
+		//scenes->push(new GamingScene);
+		scenes->push(new ResultScene);
 		break;
 
 	default:

@@ -153,6 +153,8 @@
     <ClCompile Include="LoginScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObstacleObject.cpp" />
+    <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="secondCharacter.cpp" />
     <ClCompile Include="WaitingScene.cpp" />
@@ -169,6 +171,8 @@
     <ClInclude Include="GamingScene.h" />
     <ClInclude Include="LoginScene.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ObstacleObject.h" />
+    <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="secondCharacter.h" />
     <ClInclude Include="WaitingScene.h" />
