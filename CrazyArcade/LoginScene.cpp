@@ -8,14 +8,10 @@ LoginScene::LoginScene()
 	Init();
 }
 
-LoginScene::LoginScene(stack<Scene*>* scenes, RenderWindow* window)
-	:Scene(scenes, window)
+LoginScene::LoginScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window, soundSystem)
 {
 	Init();
-}
-
-LoginScene::~LoginScene()
-{
 }
 
 void LoginScene::Init()
@@ -36,7 +32,7 @@ void LoginScene::Input(Event* e)
 		break;
 
 	case Keyboard::Enter:
-		scenes->push(new WaitingScene(scenes, window));
+		scenes->push(new WaitingScene(scenes, window, soundSystem));
 		break;
 
 	default:

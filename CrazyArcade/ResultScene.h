@@ -13,12 +13,10 @@ class ResultScene : public Scene
 {
 public:
 	ResultScene();
-	ResultScene(stack<Scene*>* scenes, RenderWindow* window);
-	~ResultScene();
+	ResultScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
+	~ResultScene() = default;
 
 private:
-	Music music;
-
 	vector<ObstacleObject*> walls;
 	vector<ObstacleInfo> wallPositions;
 

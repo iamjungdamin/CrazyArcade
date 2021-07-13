@@ -30,6 +30,12 @@ void SoundSystem::Init()
 	sound->setLoop(this->loop);
 }
 
+void SoundSystem::Destroy()
+{
+	DELETE(sound);
+	DELETE(soundBuffer);
+}
+
 void SoundSystem::Play()
 {
 	sound->play();

@@ -1,4 +1,5 @@
 #pragma once
+#include "SoundSystem.h"
 
 class Scene;
 
@@ -7,10 +8,14 @@ class Engine final
 {
 public:
 	Engine();
+	Engine(const Engine&) = delete;
+	Engine& operator= (const Engine&) = delete;
 	~Engine();
 
 private:
 	RenderWindow* window = nullptr;
+	SoundSystem* soundSystem = nullptr;
+
 	Event evt;
 
 	Clock timer;

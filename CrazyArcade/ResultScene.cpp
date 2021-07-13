@@ -12,24 +12,16 @@ ResultScene::ResultScene()
 	Init();
 }
 
-ResultScene::ResultScene(stack<Scene*>* scenes, RenderWindow* window)
-	:Scene(scenes, window)
+ResultScene::ResultScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window, soundSystem)
 {
 	Init();
 }
 
-ResultScene::~ResultScene()
-{
-}
-
 void ResultScene::Init()
 {
-	music.openFromFile("Sound/patritmap.wav");
-	//music.play();
-
 	vObjects.push_back(new BackgroundObject("Image/Bg/background.png"));
 
-	// 타일 맵 오브젝트 위치 맞추기
 	int activePosition[] = {
 		1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1,
 		1, 2, 1, 0, 4, 4, 4, 0, 4, 4, 4, 0, 1, 2, 1,
@@ -47,7 +39,6 @@ void ResultScene::Init()
 
 	};
 
-	// 위 타일맵에 필요한 오브젝트 텍스쳐를 이용하여 로드하기
 	for (int i = 0; i < 15 * 13; ++i)
 	{
 		if (activePosition[i] == 2)
@@ -74,7 +65,6 @@ void ResultScene::Init()
 		walls.push_back(new ObstacleObject("Image/Bg/wall1.png"));
 	}
 
-	// 벽에 대한 정보, (위치 절대 좌표, 위치 타일맵)
 	ObstacleInfo info;
 	for (int i = 0; i < 13; ++i)
 	{
@@ -99,9 +89,7 @@ void ResultScene::Init()
 		}
 	}
 	
-	// 위에서 만든 벽에 대한 정보를 각 오브젝트에 매핑
-	// for문이 반대인 이유는 크레이지 아케이드 게임상에서 렌더링 되는것이
-	// 아래쪽이 더 빠르게 그려져야한다.
+	// for문이 반대인 이유는 아래쪽이 더 빠르게 그려져야 하기 때문
 	for (int i = wallPositions.size() - 1; i > -1; --i)
 	{
 		// 그릴곳 안그릴곳 체크하기

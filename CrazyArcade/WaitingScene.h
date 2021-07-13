@@ -4,11 +4,8 @@ class WaitingScene : public Scene
 {
 public:
 	WaitingScene();
-	WaitingScene(stack <Scene*>* scenes, RenderWindow* window);
-	~WaitingScene();
-
-private:
-	Music music;
+	WaitingScene(stack <Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
+	~WaitingScene() = default;
 
 private:
 	virtual void Init();

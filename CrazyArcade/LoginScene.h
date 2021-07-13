@@ -4,8 +4,8 @@ class LoginScene : public Scene
 {
 public:
 	LoginScene();
-	LoginScene(stack <Scene*>* scenes, RenderWindow* window);
-	~LoginScene();
+	LoginScene(stack <Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
+	~LoginScene() = default;
 
 private:
 	virtual void Init();

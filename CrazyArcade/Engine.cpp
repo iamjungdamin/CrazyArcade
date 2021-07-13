@@ -14,13 +14,16 @@ Engine::~Engine()
 void Engine::Init()
 {
 	this->window = new RenderWindow(VideoMode(800, 600), "Crazy Arcade");
+	this->window->setFramerateLimit(60);
 	window->setMouseCursorVisible(true);
 
 	Image icon;
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	
-	this->scenes.push(new LoginScene(&scenes, window));
+	soundSystem = new SoundSystem("Sound/login.wav");
+	this->scenes.push(new LoginScene(&scenes, window, soundSystem));
+	soundSystem->Play();
 }
 
 void Engine::Destroy()
@@ -29,6 +32,7 @@ void Engine::Destroy()
 	{
 		delete window;
 	}
+	soundSystem->Destroy();
 }
 
 void Engine::Input()

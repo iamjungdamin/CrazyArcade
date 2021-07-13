@@ -1,18 +1,22 @@
 #pragma once
-
-class Object;
+#include "Object.h"
+#include "SoundSystem.h"
 
 class Scene
 {
 public:
 	Scene();
-	Scene(stack <Scene*>* scenes, RenderWindow* window);
-	virtual ~Scene();
+	Scene(stack <Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
+	Scene(const Scene&) = delete;
+	Scene& operator=(const Scene&) = delete;
+	virtual ~Scene() = default;
 
 protected:
 	vector<Object*> vObjects;
 	stack <Scene*>* scenes = nullptr;
 	RenderWindow* window = nullptr;
+	SoundSystem* soundSystem = nullptr;
+
 	bool quit = false;
 
 private:

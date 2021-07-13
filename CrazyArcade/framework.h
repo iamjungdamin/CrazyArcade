@@ -14,3 +14,5 @@ using namespace sf;
 #include <stack>
 
 using namespace std;
+
+#define DELETE(x) if(x) delete (x); (x) = nullptr
