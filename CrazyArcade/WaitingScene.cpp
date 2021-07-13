@@ -9,8 +9,8 @@ WaitingScene::WaitingScene()
 	Init();
 }
 
-WaitingScene::WaitingScene(stack<Scene*>* scenes)
-	:Scene(scenes)
+WaitingScene::WaitingScene(stack<Scene*>* scenes, RenderWindow* window)
+	:Scene(scenes, window)
 {
 	Init();
 }
@@ -41,7 +41,7 @@ void WaitingScene::Input(Event* e)
 	case Keyboard::F5:
 		music.stop();
 		//scenes->push(new GamingScene);
-		scenes->push(new ResultScene);
+		scenes->push(new ResultScene(scenes, window));
 		break;
 
 	default:

@@ -4,7 +4,7 @@ class LoginScene : public Scene
 {
 public:
 	LoginScene();
-	LoginScene(stack <Scene*>* scenes);
+	LoginScene(stack <Scene*>* scenes, RenderWindow* window);
 	~LoginScene();
 
 private:

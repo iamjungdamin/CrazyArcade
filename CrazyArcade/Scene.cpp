@@ -7,8 +7,8 @@ Scene::Scene()
 	Init();
 }
 
-Scene::Scene(stack<Scene*>* scenes)
-	:scenes(scenes)	//부모클래스의 생성자를 그대로 사용해라
+Scene::Scene(stack<Scene*>* scenes, RenderWindow* window)
+	:scenes(scenes), window(window)
 {
 	Init();
 }

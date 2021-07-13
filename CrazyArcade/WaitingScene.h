@@ -4,7 +4,7 @@ class WaitingScene : public Scene
 {
 public:
 	WaitingScene();
-	WaitingScene(stack <Scene*>* scenes);
+	WaitingScene(stack <Scene*>* scenes, RenderWindow* window);
 	~WaitingScene();
 
 private:

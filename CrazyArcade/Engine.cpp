@@ -20,7 +20,7 @@ void Engine::Init()
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	
-	this->scenes.push(new LoginScene(&scenes));
+	this->scenes.push(new LoginScene(&scenes, window));
 }
 
 void Engine::Destroy()

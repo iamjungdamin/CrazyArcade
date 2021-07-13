@@ -12,8 +12,8 @@ ResultScene::ResultScene()
 	Init();
 }
 
-ResultScene::ResultScene(stack<Scene*>* scenes)
-	:Scene(scenes)
+ResultScene::ResultScene(stack<Scene*>* scenes, RenderWindow* window)
+	:Scene(scenes, window)
 {
 	Init();
 }
