@@ -166,6 +166,7 @@
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="secondCharacter.cpp" />
+    <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="WaitingScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +194,7 @@
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="secondCharacter.h" />
+    <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="WaitingScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
