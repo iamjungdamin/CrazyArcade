@@ -22,8 +22,10 @@ void Engine::Init()
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	
 	soundSystem = new SoundSystem("Sound/login.wav");
+	soundSystem->AddSoundEffect("Sound/btnClick.wav", "Click");
+	soundSystem->AddSoundEffect("Sound/gameStart.wav", "Start");
+	soundSystem->AddSoundEffect("Sound/add.wav", "Bubble");
 	this->scenes.push(new LoginScene(&scenes, window, soundSystem));
-	soundSystem->Play();
 }
 
 void Engine::Destroy()

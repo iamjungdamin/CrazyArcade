@@ -25,16 +25,38 @@ void LoginScene::Destroy()
 
 void LoginScene::Input(Event* e)
 {
-	switch (e->key.code)
+	switch (e->type)
 	{
-	case Keyboard::Escape:
-		scenes->top()->EndScene();
+	case Event::KeyPressed:
+		switch (e->key.code)
+		{
+		case Keyboard::Escape:
+			scenes->top()->EndScene();
+			break;
+
+		case Keyboard::F7:
+			soundSystem->volDown();
+			soundSystem->effectVolDown();
+			break;
+
+		case Keyboard::F8:
+			soundSystem->volUp();
+			soundSystem->effectVolUp();
+			break;
+
+		case Keyboard::Enter:
+			scenes->push(new WaitingScene(scenes, window, soundSystem));
+			break;
+
+		default:
+			break;
+		}
 		break;
 
-	case Keyboard::Enter:
-		scenes->push(new WaitingScene(scenes, window, soundSystem));
+	case Event::MouseButtonPressed:
+		soundSystem->EffectPlay("Click");
 		break;
-
+		
 	default:
 		break;
 	}

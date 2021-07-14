@@ -28,12 +28,88 @@ void SoundSystem::Init()
 	sound->setBuffer(*soundBuffer);
 	sound->setVolume(this->volume);
 	sound->setLoop(this->loop);
+	sound->play();
 }
 
 void SoundSystem::Destroy()
 {
-	DELETE(sound);
 	DELETE(soundBuffer);
+	DELETE(sound);
+
+	for (auto& s : soundEffect)
+	{
+		DELETE(s.second);
+	}
+	soundEffect.clear();
+
+	for (auto& sb : soundEffectBuffer)
+	{
+		DELETE(sb.second);
+	}
+	soundEffectBuffer.clear();
+}
+
+void SoundSystem::AddSoundEffect(const string& soundFilePath, const string& effectName)
+{
+	soundEffect[effectName] = new Sound;
+	soundEffectBuffer[effectName] = new SoundBuffer;
+
+	if (!soundEffectBuffer[effectName]->loadFromFile(soundFilePath))
+	{
+		cout << " not load sound - " << soundFilePath << endl;
+	}
+	soundEffect[effectName]->setBuffer(*soundEffectBuffer[effectName]);
+	soundEffect[effectName]->setVolume(effectVolume);
+	soundEffect[effectName]->setLoop(false);
+}
+
+void SoundSystem::EffectPlay(const string& effectName)
+{
+	soundEffect[effectName]->play();
+}
+
+void SoundSystem::volDown()
+{
+	if (volume > 5.f)
+	{
+		volume -= this->volumeDistance;
+		sound->setVolume(volume);
+		cout << "volume: " << volume << endl;
+	}
+}
+
+void SoundSystem::volUp()
+{
+	if (volume < 100.f)
+	{
+		volume += this->volumeDistance;
+		sound->setVolume(volume);
+		cout << "volume: " << volume << endl;
+	}
+}
+
+void SoundSystem::effectVolDown()
+{
+	if (effectVolume < 5.f)
+	{
+		for (auto& s : soundEffect)
+		{
+			effectVolume -= volumeDistance;
+			s.second->setVolume(effectVolume);
+		}
+	}
+}
+
+void SoundSystem::effectVolUp()
+{
+	if (effectVolume < 100.f)
+	{
+		for (auto& s : soundEffect)
+		{
+			effectVolume += volumeDistance;
+			s.second->setVolume(effectVolume);
+		}
+	}
 }
 
 void SoundSystem::Play()

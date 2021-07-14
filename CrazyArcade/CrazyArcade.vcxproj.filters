@@ -55,9 +55,6 @@
     <Filter Include="소스 파일\02. Scene\99. BubbleScene">
       <UniqueIdentifier>{441c2f8c-e7a7-4237-a2a5-d5901e67ffc1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02. Scene\04. Result">
-      <UniqueIdentifier>{e15ac193-7738-4501-8d9c-84a84391ccd4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\03. Object\01. AnimationObject\04. secondCharacter">
       <UniqueIdentifier>{b7d22ac1-b1a2-458e-bd3f-24b3e6141935}</UniqueIdentifier>
     </Filter>
@@ -72,6 +69,9 @@
     </Filter>
     <Filter Include="소스 파일\04. SoundSystem">
       <UniqueIdentifier>{42f5dfde-d404-4e0f-b437-35d1ddeefcef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\03. Result">
+      <UniqueIdentifier>{e15ac193-7738-4501-8d9c-84a84391ccd4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +115,7 @@
       <Filter>소스 파일\03. Object\01. AnimationObject\04. secondCharacter</Filter>
     </ClCompile>
     <ClCompile Include="ResultScene.cpp">
-      <Filter>소스 파일\02. Scene\04. Result</Filter>
+      <Filter>소스 파일\02. Scene\03. Result</Filter>
     </ClCompile>
     <ClCompile Include="BackgroundObject.cpp">
       <Filter>소스 파일\03. Object\02. BackgroundObject\00. BackgroundObject</Filter>
@@ -168,7 +168,7 @@
       <Filter>소스 파일\03. Object\01. AnimationObject\04. secondCharacter</Filter>
     </ClInclude>
     <ClInclude Include="ResultScene.h">
-      <Filter>소스 파일\02. Scene\04. Result</Filter>
+      <Filter>소스 파일\02. Scene\03. Result</Filter>
     </ClInclude>
     <ClInclude Include="BackgroundObject.h">
       <Filter>소스 파일\03. Object\02. BackgroundObject\00. BackgroundObject</Filter>

@@ -115,30 +115,33 @@ void ResultScene::Destroy()
 
 void ResultScene::Input(Event* e)
 {
-	switch (e->key.code)
+	switch (e->type)
 	{
-	case Keyboard::Up:
+	case Event::KeyPressed:
+		switch (e->key.code)
+		{
+		case Keyboard::Escape:
+			scenes->top()->EndScene();
+			break;
+
+		case Keyboard::RShift:
+			soundSystem->EffectPlay("Bubble");
+			break;
+
+		case Keyboard::LShift:
+			soundSystem->EffectPlay("Bubble");
+			break;
+
+		default:
+			break;
+		}
 		break;
 
-	case Keyboard::Down:
+	case Event::MouseButtonPressed:
+		soundSystem->EffectPlay("Click");
 		break;
 
-	case Keyboard::Left:
-		break;
-
-	case Keyboard::Right:
-		break;
-
-	case Keyboard::R:
-		break;
-
-	case Keyboard::F:
-		break;
-
-	case Keyboard::D:
-		break;
-
-	case Keyboard::G:
+	default:
 		break;
 	}
 }

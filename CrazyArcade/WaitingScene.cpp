@@ -26,14 +26,27 @@ void WaitingScene::Destory()
 
 void WaitingScene::Input(Event* e)
 {
-	switch (e->key.code)
+	switch (e->type)
 	{
-	case Keyboard::Escape:
-		scenes->top()->EndScene();
+	case Event::KeyPressed:
+		switch (e->key.code)
+		{
+		case Keyboard::Escape:
+			scenes->top()->EndScene();
+			break;
+
+		case Keyboard::F5:
+			soundSystem->EffectPlay("Start");
+			scenes->push(new ResultScene(scenes, window, soundSystem));
+			break;
+
+		default:
+			break;
+		}
 		break;
 
-	case Keyboard::F5:
-		scenes->push(new ResultScene(scenes, window, soundSystem));
+	case Event::MouseButtonPressed:
+		soundSystem->EffectPlay("Click");
 		break;
 
 	default:
