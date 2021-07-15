@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "BackgroundObject.h"
 #include "SoundSystem.h"
 
 class Scene
@@ -12,7 +13,10 @@ public:
 	virtual ~Scene() = default;
 
 protected:
-	vector<Object*> vObjects;
+	Object* backGround = nullptr;
+	vector<Object*> animationObjects;
+	vector<Object*> staticObjects;
+
 	stack <Scene*>* scenes = nullptr;
 	RenderWindow* window = nullptr;
 	SoundSystem* soundSystem = nullptr;
@@ -27,6 +31,6 @@ public:
 	void EndScene();
 	virtual void Input(Event* e);
 	virtual void Update(const float& deltaTime);
-	virtual void Render(RenderWindow* window);
+	virtual void Render();
 };
 

@@ -20,7 +20,7 @@ ResultScene::ResultScene(stack<Scene*>* scenes, RenderWindow* window, SoundSyste
 
 void ResultScene::Init()
 {
-	vObjects.push_back(new BackgroundObject("Image/Bg/background.png"));
+	backGround = new BackgroundObject("Image/Bg/background.png");
 
 	int activePosition[] = {
 		1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1,
@@ -104,9 +104,9 @@ void ResultScene::Init()
 		walls.data()[i]->setPosition(wallPositions.data()[i].position);
 	}
 
-	vObjects.push_back(new Character);
-	vObjects.push_back(new secondCharacter);
-	vObjects.push_back(new Bubble);
+	animationObjects.push_back(new Character);
+	animationObjects.push_back(new secondCharacter);
+	animationObjects.push_back(new Bubble);
 }
 
 void ResultScene::Destroy()
@@ -149,9 +149,10 @@ void ResultScene::Update(const float& deltaTime)
 
 }
 
-void ResultScene::Render(RenderWindow* window)
+void ResultScene::Render()
 {
-	Scene::Render(window);
+	Scene::Render();
+
 	for (auto& wall : walls)
 	{
 		if (wall->GetActive())

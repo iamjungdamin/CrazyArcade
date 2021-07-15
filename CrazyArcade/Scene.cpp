@@ -63,16 +63,43 @@ void Scene::Input(Event* e)
 
 void Scene::Update(const float& deltaTime)
 {
-	for (auto& obj : vObjects)
+	for (auto& obj : animationObjects)
 	{
-		obj->Update(deltaTime);
+		if (obj->IsActive())
+		{
+			obj->Update(deltaTime);
+		}
+	}
+
+	for (auto& obj : animationObjects)
+	{
+		if (obj->IsActive())
+		{
+			obj->Update(deltaTime);
+		}
 	}
 }
 
-void Scene::Render(RenderWindow* window)
+void Scene::Render()
 {
-	for (auto& obj : vObjects)
+	if (backGround)
 	{
+		window->draw(*backGround);
+	}
+
+	for (auto& obj : animationObjects)
+	{
+		if (obj->IsActive())
+		{
 		window->draw(*obj);
+		}
+	}
+
+	for (auto& obj : staticObjects)
+	{
+		if (obj->IsActive())
+		{
+			window->draw(*obj);
+		}
 	}
 }

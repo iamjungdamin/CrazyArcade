@@ -16,7 +16,7 @@ LoginScene::LoginScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem*
 
 void LoginScene::Init()
 {
-	vObjects.push_back(new BackgroundObject("Image/Bg/login.png"));
+	backGround = new BackgroundObject("Image/Bg/login.png");
 }
 
 void LoginScene::Destroy()
@@ -54,7 +54,7 @@ void LoginScene::Update(const float& deltaTime)
 	Scene::Update(deltaTime);
 }
 
-void LoginScene::Render(RenderWindow* window)
+void LoginScene::Render()
 {
-	Scene::Render(window);
+	Scene::Render();
 }

@@ -17,7 +17,7 @@ WaitingScene::WaitingScene(stack<Scene*>* scenes, RenderWindow* window, SoundSys
 
 void WaitingScene::Init()
 {
-	vObjects.push_back(new BackgroundObject("Image/Bg/Waiting.png"));
+	backGround = new BackgroundObject("Image/Bg/Waiting.png");
 }
 
 void WaitingScene::Destory()
@@ -56,7 +56,7 @@ void WaitingScene::Update(const float& deltaTime)
 	Scene::Update(deltaTime);
 }
 
-void WaitingScene::Render(RenderWindow* window)
+void WaitingScene::Render()
 {
-	Scene::Render(window);
+	Scene::Render();
 }

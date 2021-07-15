@@ -91,7 +91,7 @@ void Engine::Render()
 		Update();
 		if (!scenes.empty())
 		{
-			scenes.top()->Render(window);
+			scenes.top()->Render();
 		}
 		else
 		{
