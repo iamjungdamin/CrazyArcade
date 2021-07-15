@@ -115,15 +115,13 @@ void ResultScene::Destroy()
 
 void ResultScene::Input(Event* e)
 {
+	Scene::Input(e);
+
 	switch (e->type)
 	{
 	case Event::KeyPressed:
 		switch (e->key.code)
 		{
-		case Keyboard::Escape:
-			scenes->top()->EndScene();
-			break;
-
 		case Keyboard::RShift:
 			soundSystem->EffectPlay("Bubble");
 			break;
@@ -138,7 +136,6 @@ void ResultScene::Input(Event* e)
 		break;
 
 	case Event::MouseButtonPressed:
-		soundSystem->EffectPlay("Click");
 		break;
 
 	default:

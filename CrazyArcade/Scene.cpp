@@ -28,6 +28,37 @@ void Scene::EndScene()
 
 void Scene::Input(Event* e)
 {
+	switch (e->type)
+	{
+	case Event::KeyPressed:
+		switch (e->key.code)
+		{
+		case Keyboard::Escape:
+			scenes->top()->EndScene();
+			break;
+
+		case Keyboard::F7:
+			soundSystem->volDown();
+			soundSystem->effectVolDown();
+			break;
+
+		case Keyboard::F8:
+			soundSystem->volUp();
+			soundSystem->effectVolUp();
+			break;
+
+		default:
+			break;
+		}
+		break;
+
+	case Event::MouseButtonPressed:
+		soundSystem->EffectPlay("Click");
+		break;
+
+	default:
+		break;
+	}
 }
 
 void Scene::Update(const float& deltaTime)
