@@ -111,6 +111,7 @@ void ResultScene::Init()
 
 void ResultScene::Destroy()
 {
+	Scene::Destroy();
 }
 
 void ResultScene::Input(Event* e)
@@ -146,12 +147,14 @@ void ResultScene::Input(Event* e)
 void ResultScene::Update(const float& deltaTime)
 {
 	Scene::Update(deltaTime);
-
 }
 
 void ResultScene::Render()
 {
-	Scene::Render();
+	if (backGround)
+	{
+		window->draw(*backGround);
+	}
 
 	for (auto& wall : walls)
 	{
@@ -162,6 +165,22 @@ void ResultScene::Render()
 		else
 		{
 			continue;
+		}
+	}
+
+	for (auto& obj : animationObjects)
+	{
+		if (obj->IsActive())
+		{
+			window->draw(*obj);
+		}
+	}
+
+	for (auto& obj : staticObjects)
+	{
+		if (obj->IsActive())
+		{
+			window->draw(*obj);
 		}
 	}
 }

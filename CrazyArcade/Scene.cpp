@@ -26,6 +26,24 @@ void Scene::EndScene()
 	quit = true;
 }
 
+void Scene::Destroy()
+{
+	if (backGround)
+	{
+		backGround->Destroy();
+	}
+
+	for (auto& obj : animationObjects)
+	{
+		obj->Destroy();
+	}
+
+	for (auto& obj : staticObjects)
+	{
+		obj->Destroy();
+	}
+}
+
 void Scene::Input(Event* e)
 {
 	switch (e->type)
@@ -71,7 +89,7 @@ void Scene::Update(const float& deltaTime)
 		}
 	}
 
-	for (auto& obj : animationObjects)
+	for (auto& obj : staticObjects)
 	{
 		if (obj->IsActive())
 		{

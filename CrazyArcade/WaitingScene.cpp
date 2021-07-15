@@ -22,6 +22,7 @@ void WaitingScene::Init()
 
 void WaitingScene::Destory()
 {
+	Scene::Destroy();
 }
 
 void WaitingScene::Input(Event* e)

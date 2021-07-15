@@ -49,12 +49,6 @@
     <Filter Include="소스 파일\03. Object\02. BackgroundObject">
       <UniqueIdentifier>{cf65d5bd-e518-4866-8c06-48a41b2408e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02. Scene\99. CharacterScene">
-      <UniqueIdentifier>{0b67a873-9c40-4c72-a837-f6f56536d4a8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\02. Scene\99. BubbleScene">
-      <UniqueIdentifier>{441c2f8c-e7a7-4237-a2a5-d5901e67ffc1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\03. Object\01. AnimationObject\04. secondCharacter">
       <UniqueIdentifier>{b7d22ac1-b1a2-458e-bd3f-24b3e6141935}</UniqueIdentifier>
     </Filter>
@@ -63,9 +57,6 @@
     </Filter>
     <Filter Include="소스 파일\03. Object\02. BackgroundObject\01. ObstacleObject">
       <UniqueIdentifier>{9cf245b5-0395-460f-a426-34cb1f89325b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\02. Scene\99. Gaming">
-      <UniqueIdentifier>{773a6661-cd0d-4a4a-9d6a-4320cc4e492f}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\04. SoundSystem">
       <UniqueIdentifier>{42f5dfde-d404-4e0f-b437-35d1ddeefcef}</UniqueIdentifier>
@@ -96,20 +87,11 @@
     <ClCompile Include="Scene.cpp">
       <Filter>소스 파일\02. Scene\00. Scene</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterScene.cpp">
-      <Filter>소스 파일\02. Scene\99. CharacterScene</Filter>
-    </ClCompile>
-    <ClCompile Include="BubbleScene.cpp">
-      <Filter>소스 파일\02. Scene\99. BubbleScene</Filter>
-    </ClCompile>
     <ClCompile Include="LoginScene.cpp">
       <Filter>소스 파일\02. Scene\01. Login</Filter>
     </ClCompile>
     <ClCompile Include="WaitingScene.cpp">
       <Filter>소스 파일\02. Scene\02. Wating</Filter>
-    </ClCompile>
-    <ClCompile Include="GamingScene.cpp">
-      <Filter>소스 파일\02. Scene\99. Gaming</Filter>
     </ClCompile>
     <ClCompile Include="secondCharacter.cpp">
       <Filter>소스 파일\03. Object\01. AnimationObject\04. secondCharacter</Filter>
@@ -149,20 +131,11 @@
     <ClInclude Include="Scene.h">
       <Filter>소스 파일\02. Scene\00. Scene</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterScene.h">
-      <Filter>소스 파일\02. Scene\99. CharacterScene</Filter>
-    </ClInclude>
-    <ClInclude Include="BubbleScene.h">
-      <Filter>소스 파일\02. Scene\99. BubbleScene</Filter>
-    </ClInclude>
     <ClInclude Include="LoginScene.h">
       <Filter>소스 파일\02. Scene\01. Login</Filter>
     </ClInclude>
     <ClInclude Include="WaitingScene.h">
       <Filter>소스 파일\02. Scene\02. Wating</Filter>
-    </ClInclude>
-    <ClInclude Include="GamingScene.h">
-      <Filter>소스 파일\02. Scene\99. Gaming</Filter>
     </ClInclude>
     <ClInclude Include="secondCharacter.h">
       <Filter>소스 파일\03. Object\01. AnimationObject\04. secondCharacter</Filter>

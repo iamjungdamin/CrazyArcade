@@ -21,6 +21,7 @@ void LoginScene::Init()
 
 void LoginScene::Destroy()
 {
+	Scene::Destroy();
 }
 
 void LoginScene::Input(Event* e)

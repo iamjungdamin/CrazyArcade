@@ -9,18 +9,18 @@ Engine::Engine()
 
 Engine::~Engine()
 {
+	Destroy();
 }
 
 void Engine::Init()
 {
 	this->window = new RenderWindow(VideoMode(800, 600), "Crazy Arcade");
 	this->window->setFramerateLimit(60);
-	window->setMouseCursorVisible(true);
 
 	Image icon;
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-	
+
 	soundSystem = new SoundSystem("Sound/login.wav");
 	soundSystem->AddSoundEffect("Sound/btnClick.wav", "Click");
 	soundSystem->AddSoundEffect("Sound/gameStart.wav", "Start");
@@ -30,10 +30,16 @@ void Engine::Init()
 
 void Engine::Destroy()
 {
-	if (window)		//if (window != nullptr)
+	DELETE(window);
+
+	for (size_t i = 0; i < scenes.size(); ++i)
 	{
-		delete window;
+		scenes.top()->Destroy();
+		scenes.top() = nullptr;
+		delete scenes.top();
+		scenes.pop();
 	}
+
 	soundSystem->Destroy();
 }
 
