@@ -71,11 +71,29 @@ void Scene::Input(Event* e)
 		break;
 
 	case Event::MouseButtonPressed:
-		soundSystem->EffectPlay("Click");
 		break;
 
 	default:
 		break;
+	}
+}
+
+void Scene::Update(const Vector2f& mousePosition)
+{
+	for (auto& obj : animationObjects)
+	{
+		if (obj->IsActive())
+		{
+			obj->Update(mousePosition);
+		}
+	}
+
+	for (auto& obj : staticObjects)
+	{
+		if (obj->IsActive())
+		{
+			obj->Update(mousePosition);
+		}
 	}
 }
 

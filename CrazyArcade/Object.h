@@ -1,21 +1,34 @@
 #pragma once
+
 class Object : public Sprite
 {
 public:
-	Object() = default;
-	~Object() = default;
+	Object();
+	Object(const string& textureFilePath);
+	Object(const string& textureFilePath, const Vector2f& position);
+	virtual ~Object() = default;
 
-private:
+protected:
 	bool isActive = true;
-
+	
 private:
-	virtual void Init() = 0;
+	Texture* texture = nullptr;
+
+	Vertex* vertices = nullptr;
+	Color boxColor = Color::Red;
+	bool debugBox = true;
 
 public:
+	virtual void Destroy();
+
+	void SetDebugBoxActive(bool isActive);
 	bool IsActive();
 	void SetActive(bool isActive);
 
-	virtual void Destroy() = 0;
-	virtual void Update(const float& deltaTime) = 0;
-};
+	void SetBoxColor(const Color& color);
+	void SetBoxColor(const Uint8& r, const Uint8& g, const Uint8& b, const Uint8& a);
 
+	virtual void Update(const Vector2f& mousePosition);
+	virtual void Update(const float& deltaTime);
+	virtual void Render(RenderTarget* target);
+};

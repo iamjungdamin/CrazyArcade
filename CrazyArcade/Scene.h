@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "BackgroundObject.h"
+#include "ButtonObject.h"
 #include "SoundSystem.h"
 
 class Scene
@@ -32,6 +33,7 @@ public:
 	virtual void Destroy();
 
 	virtual void Input(Event* e);
+	virtual void Update(const Vector2f& mousePosition);
 	virtual void Update(const float& deltaTime);
 	virtual void Render();
 };

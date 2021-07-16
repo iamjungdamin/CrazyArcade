@@ -28,7 +28,7 @@ void SoundSystem::Init()
 	sound->setBuffer(*soundBuffer);
 	sound->setVolume(this->volume);
 	sound->setLoop(this->loop);
-	sound->play();
+	//sound->play();
 }
 
 void SoundSystem::Destroy()

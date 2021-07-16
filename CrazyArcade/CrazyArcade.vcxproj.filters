@@ -64,6 +64,12 @@
     <Filter Include="소스 파일\02. Scene\03. Result">
       <UniqueIdentifier>{e15ac193-7738-4501-8d9c-84a84391ccd4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02. Scene\99. Practice">
+      <UniqueIdentifier>{b88aaa44-ce99-4ada-a6d7-854ab56d8afc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\03. ButtonObject">
+      <UniqueIdentifier>{4682a008-a770-4a29-8a0e-6a5a5fead043}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -108,6 +114,15 @@
     <ClCompile Include="SoundSystem.cpp">
       <Filter>소스 파일\04. SoundSystem</Filter>
     </ClCompile>
+    <ClCompile Include="JumpObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PracScene.cpp">
+      <Filter>소스 파일\02. Scene\99. Practice</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonObject.cpp">
+      <Filter>소스 파일\03. Object\03. ButtonObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -151,6 +166,15 @@
     </ClInclude>
     <ClInclude Include="SoundSystem.h">
       <Filter>소스 파일\04. SoundSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PracScene.h">
+      <Filter>소스 파일\02. Scene\99. Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonObject.h">
+      <Filter>소스 파일\03. Object\03. ButtonObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
