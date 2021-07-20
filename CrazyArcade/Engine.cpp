@@ -26,8 +26,8 @@ void Engine::Init()
 	soundSystem->AddSoundEffect("Sound/btnClick.wav", "Click");
 	soundSystem->AddSoundEffect("Sound/gameStart.wav", "Start");
 	soundSystem->AddSoundEffect("Sound/add.wav", "Bubble");
-	//this->scenes.push(new LoginScene(&scenes, window, soundSystem));
-	this->scenes.push(new PracScene(&scenes, window, soundSystem));
+	this->scenes.push(new LoginScene(&scenes, window, soundSystem));
+	//this->scenes.push(new PracScene(&scenes, window, soundSystem));
 }
 
 void Engine::Destroy()

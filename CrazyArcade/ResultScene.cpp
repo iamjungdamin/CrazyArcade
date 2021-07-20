@@ -105,6 +105,7 @@ void ResultScene::Init()
 	}
 
 	animationObjects.push_back(new Character);
+
 	animationObjects.push_back(new secondCharacter);
 	animationObjects.push_back(new Bubble);
 }
@@ -123,11 +124,11 @@ void ResultScene::Input(Event* e)
 	case Event::KeyPressed:
 		switch (e->key.code)
 		{
-		case Keyboard::RShift:
+		case Keyboard::LShift:
 			soundSystem->EffectPlay("Bubble");
 			break;
 
-		case Keyboard::LShift:
+		case Keyboard::RShift:
 			soundSystem->EffectPlay("Bubble");
 			break;
 
