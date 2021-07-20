@@ -15,6 +15,10 @@ void Character::Init()
 	Texture* tx = nullptr;
 	char filePath[50];
 
+	tx = new Texture;
+	tx->loadFromFile("Image/diznidown00.png");
+	this->idleAnimation.push_back(tx);
+
 	for (int i = 0; i < 8; i++)
 	{
 		sprintf(filePath, "Image/dizniup%02d.png", i);
@@ -63,6 +67,7 @@ void Character::Init()
 		this->diedAnimation.push_back(tx);
 	}
 
+	stateAnimation[IDLE] = idleAnimation;
 	stateAnimation[UP] = upAnimation;
 	stateAnimation[DOWN] = downAnimation;
 	stateAnimation[LEFT] = leftAnimation;
@@ -78,28 +83,10 @@ void Character::Destroy()
 	AnimationObject::Destroy();
 }
 
-void Character::Input()
-{
-	if (Keyboard::isKeyPressed(Keyboard::Up)) {
-		state = UP;
-	}
-	else if (Keyboard::isKeyPressed(Keyboard::Down)) {
-		state = DOWN;
-	}
-	else if (Keyboard::isKeyPressed(Keyboard::Left)) {
-		state = LEFT;
-	}
-	else if (Keyboard::isKeyPressed(Keyboard::Right)) {
-		state = RIGHT;
-	}
-	else {
-		state = IDLE;
-	}
-}
-
 void Character::Update(const float& deltaTime)
 {
-	Input();
+
+
 	elapsedTime += deltaTime;
 
 	if (elapsedTime > 0.2f)
@@ -115,26 +102,24 @@ void Character::Update(const float& deltaTime)
 		elapsedTime = 0.f;
 	}
 
-	switch (state)
-	{
-	case UP:
+	if (Keyboard::isKeyPressed(Keyboard::Up)) {
+		state = UP;
 		move({ 0.f, -2.f });
-		break;
-
-	case DOWN:
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Down)) {
+		state = DOWN;
 		move({ 0.f, 2.f });
-		break;
-
-	case LEFT:
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Left)) {
+		state = LEFT;
 		move({ -2.f, 0.f });
-		break;
-
-	case RIGHT:
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Right)) {
+		state = RIGHT;
 		move({ 2.f, 0.f });
-		break;
-
-	default:
-		move({ 0.f,0.f });
-		break;
+	}
+	else
+	{
+		keyFrame = 0;
 	}
 }

@@ -19,6 +19,7 @@ public:
 	virtual ~Character();
 
 private:
+	vector<Texture*> idleAnimation;
 	vector<Texture*> upAnimation;
 	vector<Texture*> downAnimation;
 	vector<Texture*> leftAnimation;
@@ -34,7 +35,6 @@ private:
 
 public:
 	virtual void Destroy();
-	virtual void Input();
 	virtual void Update(const float& deltaTime);
 };
 
