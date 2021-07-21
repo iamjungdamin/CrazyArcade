@@ -44,7 +44,6 @@ void Bubble::Destroy()
 
 void Bubble::Update(const float& deltaTime)
 {
-	AnimationObject::Update(deltaTime);
 	elapsedTime += deltaTime;
 
 	if (elapsedTime > 0.2f)
