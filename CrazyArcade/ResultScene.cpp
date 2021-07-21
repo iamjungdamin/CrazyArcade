@@ -22,6 +22,8 @@ void ResultScene::Init()
 {
 	backGround = new BackgroundObject("Image/Bg/background.png");
 
+	soundSystem->MusicPlay("patrit");
+
 	int activePosition[] = {
 		1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1,
 		1, 2, 1, 0, 4, 4, 4, 0, 4, 4, 4, 0, 1, 2, 1,
@@ -36,7 +38,6 @@ void ResultScene::Init()
 		1, 1, 0, 1, 1, 0, 4, 4, 4, 0, 1, 1, 0, 1, 1,
 		1, 2, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 2, 1,
 		1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1,
-
 	};
 
 	for (int i = 0; i < 15 * 13; ++i)
@@ -70,21 +71,16 @@ void ResultScene::Init()
 	{
 		if (i == 0)
 		{
-			// 첫줄은 60만큼 띄우기
 			info.position.y = 60;
 		}
 		else
 		{
-			// 두번째줄부터 40씩 늘어남
 			info.position.y = 60 + i * 40;
 		}
-		// x축
 		for (int j = 0; j < 15; ++j)
 		{
-			//첫줄 40 + 다음줄 이어가기
 			info.position.x = 40 + 40 * j;
 			info.positionToMap = Vector2i(j, i);
-			// 정보를 벡터에 집어넣기
 			wallPositions.push_back(info);
 		}
 	}
@@ -92,7 +88,6 @@ void ResultScene::Init()
 	// for문이 반대인 이유는 아래쪽이 더 빠르게 그려져야 하기 때문
 	for (int i = wallPositions.size() - 1; i > -1; --i)
 	{
-		// 그릴곳 안그릴곳 체크하기
 		if (activePosition[i] >= 1)
 		{
 			walls.data()[i]->SetActive(true);

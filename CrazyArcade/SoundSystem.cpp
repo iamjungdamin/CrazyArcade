@@ -36,6 +36,18 @@ void SoundSystem::Destroy()
 	DELETE(soundBuffer);
 	DELETE(sound);
 
+	for (auto& b : bgmusic)
+	{
+		DELETE(b.second);
+	}
+	bgmusic.clear();
+
+	for (auto& bb : bgmusicBuffer)
+	{
+		DELETE(bb.second);
+	}
+	bgmusicBuffer.clear();
+
 	for (auto& s : soundEffect)
 	{
 		DELETE(s.second);
@@ -47,6 +59,30 @@ void SoundSystem::Destroy()
 		DELETE(sb.second);
 	}
 	soundEffectBuffer.clear();
+}
+
+void SoundSystem::AddMusic(const string& musicFilePath, const string& musicName, bool loop)
+{
+	bgmusic[musicName] = new Sound;
+	bgmusicBuffer[musicName] = new SoundBuffer;
+
+	if (!bgmusicBuffer[musicName]->loadFromFile(musicFilePath))
+	{
+		cout << " not load sound - " << musicFilePath << endl;
+	}
+	bgmusic[musicName]->setBuffer(*bgmusicBuffer[musicName]);
+	bgmusic[musicName]->setVolume(volume);
+	bgmusic[musicName]->setLoop(loop);
+}
+
+void SoundSystem::MusicPlay(const string& musicName)
+{
+	bgmusic[musicName]->play();
+}
+
+void SoundSystem::MusicStop(const string& musicName)
+{
+	bgmusic[musicName]->stop();
 }
 
 void SoundSystem::AddSoundEffect(const string& soundFilePath, const string& effectName)

@@ -17,6 +17,8 @@ LoginScene::LoginScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem*
 void LoginScene::Init()
 {
 	backGround = new BackgroundObject("Image/Bg/login.png");
+
+	soundSystem->MusicPlay("login");
 }
 
 void LoginScene::Destroy()
@@ -34,6 +36,7 @@ void LoginScene::Input(Event* e)
 		switch (e->key.code)
 		{
 		case Keyboard::Enter:
+			soundSystem->MusicStop("login");
 			scenes->push(new WaitingScene(scenes, window, soundSystem));
 			break;
 

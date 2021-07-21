@@ -18,6 +18,8 @@ WaitingScene::WaitingScene(stack<Scene*>* scenes, RenderWindow* window, SoundSys
 void WaitingScene::Init()
 {
 	backGround = new BackgroundObject("Image/Bg/Waiting.png");
+
+	soundSystem->MusicPlay("waiting");
 }
 
 void WaitingScene::Destory()
@@ -35,6 +37,7 @@ void WaitingScene::Input(Event* e)
 		switch (e->key.code)
 		{
 		case Keyboard::F5:
+			soundSystem->MusicStop("waiting");
 			soundSystem->EffectPlay("Start");
 			scenes->push(new ResultScene(scenes, window, soundSystem));
 			break;

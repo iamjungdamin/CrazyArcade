@@ -14,6 +14,9 @@ private:
 	Sound* sound = nullptr;
 	SoundBuffer* soundBuffer = nullptr;
 
+	map<string, Sound*> bgmusic;
+	map<string, SoundBuffer*> bgmusicBuffer;
+
 	float volume = 20.f;
 	bool loop = false;
 
@@ -28,6 +31,10 @@ private:
 
 public:
 	void Destroy();
+
+	void AddMusic(const string& musicFilePath, const string& musicName, bool loop = false);
+	void MusicPlay(const string& musicName);
+	void MusicStop(const string& musicName);
 
 	void AddSoundEffect(const string& soundFilePath, const string& effectName);
 	void EffectPlay(const string& effectName);

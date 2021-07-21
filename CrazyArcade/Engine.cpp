@@ -22,7 +22,12 @@ void Engine::Init()
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	soundSystem = new SoundSystem("Sound/login.wav");
+	soundSystem = new SoundSystem("Sound/blank.wav");
+
+	soundSystem->AddMusic("Sound/login.wav", "login");
+	soundSystem->AddMusic("Sound/waiting.wav", "waiting");
+	soundSystem->AddMusic("Sound/patrit.wav", "patrit");
+
 	soundSystem->AddSoundEffect("Sound/btnClick.wav", "Click");
 	soundSystem->AddSoundEffect("Sound/gameStart.wav", "Start");
 	soundSystem->AddSoundEffect("Sound/add.wav", "Bubble");
