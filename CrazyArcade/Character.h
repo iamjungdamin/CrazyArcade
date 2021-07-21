@@ -28,7 +28,7 @@ private:
 	vector<Texture*> diedAnimation;
 
 	int state = IDLE;
-	map<int, vector<Texture*>> stateAnimation;
+	map<int, vector<Texture*>> characterAnimation;
 
 private:
 	virtual void Init();

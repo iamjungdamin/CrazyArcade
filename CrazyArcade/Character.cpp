@@ -67,13 +67,13 @@ void Character::Init()
 		this->diedAnimation.push_back(tx);
 	}
 
-	stateAnimation[IDLE] = idleAnimation;
-	stateAnimation[UP] = upAnimation;
-	stateAnimation[DOWN] = downAnimation;
-	stateAnimation[LEFT] = leftAnimation;
-	stateAnimation[RIGHT] = rightAnimation;
-	stateAnimation[TRAPPED] = trappedAnimation;
-	stateAnimation[DIED] = diedAnimation;
+	characterAnimation[IDLE] = idleAnimation;
+	characterAnimation[UP] = upAnimation;
+	characterAnimation[DOWN] = downAnimation;
+	characterAnimation[LEFT] = leftAnimation;
+	characterAnimation[RIGHT] = rightAnimation;
+	characterAnimation[TRAPPED] = trappedAnimation;
+	characterAnimation[DIED] = diedAnimation;
 
 	setPosition(Vector2f(100.f, 100.f));
 }
@@ -85,13 +85,11 @@ void Character::Destroy()
 
 void Character::Update(const float& deltaTime)
 {
-
-
 	elapsedTime += deltaTime;
 
 	if (elapsedTime > 0.2f)
 	{
-		for (auto& animation : stateAnimation)
+		for (auto& animation : characterAnimation)
 		{
 			if (animation.first == state)
 			{
