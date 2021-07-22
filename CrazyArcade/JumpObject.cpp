@@ -53,6 +53,14 @@ void JumpObject::Update(const float& deltaTime)
 	{
 		position.x += 3.f;
 	}
+	if (Keyboard::isKeyPressed(Keyboard::Up))
+	{
+		position.y -= 3.f;
+	}
+	if (Keyboard::isKeyPressed(Keyboard::Down))
+	{
+		position.y += 3.f;
+	}
 	setPosition(position);
 }
 

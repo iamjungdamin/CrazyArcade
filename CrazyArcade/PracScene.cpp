@@ -18,6 +18,10 @@ void PracScene::Init()
 
 	doll = new JumpObject("Image/diznidown00.png");
 	portal = new Object("Image/Bg/wall3.png");
+
+	FloatRect viewRect{ 0.f, 0.f, 400.f, 300.f };
+
+	view = new View;
 	portal->setPosition(600.f, 500.f);
 }
 
@@ -38,6 +42,14 @@ void PracScene::Input(Event* e)
 		{
 		case Keyboard::Space:
 			dynamic_cast<JumpObject*>(doll)->Jump();
+			break;
+
+		case Keyboard::Q:	//Zoom out
+			view->zoom(1.1f);
+			break;
+
+		case Keyboard::W:	//Zoom in
+			view->zoom(0.9f);
 			break;
 
 		default:
@@ -63,8 +75,22 @@ void PracScene::Update(const Vector2f& mousePostion)
 
 void PracScene::Update(const float& deltaTime)
 {
+	static bool flag = true;
+	if (flag)
+	{
+		view->zoom(1.1f);
+		// A==B:false, A!=B:true
+		flag ^= true;
+	}
+	else
+	{
+		view->zoom(0.9f);
+		flag ^= true;
+	}
+
 	if (doll)
 	{
+		view->setCenter(doll->getPosition());
 		doll->Update(deltaTime);
 	}
 
@@ -79,12 +105,15 @@ void PracScene::Update(const float& deltaTime)
 		{
 			if (Keyboard::isKeyPressed(Keyboard::Up))
 			{
+				window->setView(window->getDefaultView());
 				//scenes->push(new)
 				cout << "Æ÷Å»" << endl;
 			}
 		}
 
 	}
+	
+	window->setView(*view);
 }
 
 void PracScene::Render()
