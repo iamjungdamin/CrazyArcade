@@ -40,6 +40,12 @@ void JumpObject::Jump()
 	velocity.y = -20.f;
 }
 
+void JumpObject::TargetMove(const Vector2f& targetPosition)
+{
+	position += Math::Normalize(targetPosition, position);
+	setPosition(position);
+}
+
 void JumpObject::Update(const float& deltaTime)
 {
 	Object::Update(deltaTime);
@@ -53,15 +59,6 @@ void JumpObject::Update(const float& deltaTime)
 	{
 		position.x += 3.f;
 	}
-	if (Keyboard::isKeyPressed(Keyboard::Up))
-	{
-		position.y -= 3.f;
-	}
-	if (Keyboard::isKeyPressed(Keyboard::Down))
-	{
-		position.y += 3.f;
-	}
-	setPosition(position);
 }
 
 void JumpObject::Update(const Vector2f& mousePostion)

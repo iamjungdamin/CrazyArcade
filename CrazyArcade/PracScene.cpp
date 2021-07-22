@@ -12,25 +12,25 @@ PracScene::PracScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* s
 
 void PracScene::Init()
 {
-	bts["Button"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 200.f, 200.f });
-	bts["Button2"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 300.f, 200.f });
-	bts["Button3"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 400.f, 200.f });
+	//bts["Button"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 200.f, 200.f });
+	//bts["Button2"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 300.f, 200.f });
+	//bts["Button3"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 400.f, 200.f });
 
 	doll = new JumpObject("Image/diznidown00.png");
 	portal = new Object("Image/Bg/wall3.png");
 
 	FloatRect viewRect{ 0.f, 0.f, 400.f, 300.f };
 
-	view = new View;
+	//view = new View;
 	portal->setPosition(600.f, 500.f);
 }
 
 void PracScene::Destroy()
 {
-	for (auto& b : bts)
-	{
-		b.second->Destroy();
-	}
+	//for (auto& b : bts)
+	//{
+	//	b.second->Destroy();
+	//}
 }
 
 void PracScene::Input(Event* e)
@@ -44,13 +44,13 @@ void PracScene::Input(Event* e)
 			dynamic_cast<JumpObject*>(doll)->Jump();
 			break;
 
-		case Keyboard::Q:	//Zoom out
-			view->zoom(1.1f);
-			break;
+		//case Keyboard::Q:	//Zoom out
+		//	view->zoom(1.1f);
+		//	break;
 
-		case Keyboard::W:	//Zoom in
-			view->zoom(0.9f);
-			break;
+		//case Keyboard::W:	//Zoom in
+		//	view->zoom(0.9f);
+		//	break;
 
 		default:
 			break;
@@ -61,36 +61,41 @@ void PracScene::Input(Event* e)
 
 void PracScene::Update(const Vector2f& mousePostion)
 {
-	for (auto& b : bts)
-	{
-		b.second->Update(mousePostion);
-	}
+	//for (auto& b : bts)
+	//{
+	//	b.second->Update(mousePostion);
+	//}
 
-	if (bts["Button"]->IsPressed())
+	//if (bts["Button"]->IsPressed())
+	//{
+	//	//scenes->push(new PracScene(scenes, window, soundSystem));
+	//	cout << "버튼" << endl;
+	//}
+
+	if (doll)
 	{
-		//scenes->push(new PracScene(scenes, window, soundSystem));
-		cout << "버튼" << endl;
+		dynamic_cast<JumpObject*>(doll)->TargetMove(mousePostion);
 	}
 }
 
 void PracScene::Update(const float& deltaTime)
 {
-	static bool flag = true;
-	if (flag)
-	{
-		view->zoom(1.1f);
-		// A==B:false, A!=B:true
-		flag ^= true;
-	}
-	else
-	{
-		view->zoom(0.9f);
-		flag ^= true;
-	}
+	//static bool flag = true;
+	//if (flag)
+	//{
+	//	view->zoom(1.1f);
+	//	// A==B:false, A!=B:true
+	//	flag ^= true;
+	//}
+	//else
+	//{
+	//	view->zoom(0.9f);
+	//	flag ^= true;
+	//}
 
 	if (doll)
 	{
-		view->setCenter(doll->getPosition());
+		//view->setCenter(doll->getPosition());
 		doll->Update(deltaTime);
 	}
 
@@ -113,15 +118,15 @@ void PracScene::Update(const float& deltaTime)
 
 	}
 	
-	window->setView(*view);
+	//window->setView(*view);
 }
 
 void PracScene::Render()
 {
-	for (auto& b : bts)
-	{
-		b.second->Render(window);
-	}
+	//for (auto& b : bts)
+	//{
+	//	b.second->Render(window);
+	//}
 
 	if (portal)
 	{

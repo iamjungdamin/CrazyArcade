@@ -21,6 +21,7 @@ public:
 
 	void JumpUpdate(const float& deltaTime);
 	void Jump();
+	void TargetMove(const Vector2f& targetPosition);
 	
 	virtual void Update(const float& deltaTime);
 	virtual void Update(const Vector2f& mousePostion);
