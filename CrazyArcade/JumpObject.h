@@ -1,5 +1,13 @@
 #pragma once
 #include "Object.h"
+
+enum STATE
+{
+	jIDLE,
+	jPATROL,
+	jCHASE
+};
+
 class JumpObject : public Object
 {
 public:
@@ -12,6 +20,9 @@ private:
 	Vector2f position{ 0.f,0.f };
 	Vector2f velocity{ 0.f,0.f };
 	Vector2f acceleration{ 0.f,0.f };
+
+	Vector2f patrolPosition = { 0.f, 0.f };
+	int state = jIDLE;
 
 	float speed = 50.f;
 	float gravity = 2.f;

@@ -12,9 +12,9 @@ PracScene::PracScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* s
 
 void PracScene::Init()
 {
-	//bts["Button"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 200.f, 200.f });
-	//bts["Button2"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 300.f, 200.f });
-	//bts["Button3"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 400.f, 200.f });
+	bts["Button"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 200.f, 200.f });
+	bts["Button2"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 300.f, 200.f });
+	bts["Button3"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 400.f, 200.f });
 
 	doll = new JumpObject("Image/diznidown00.png");
 	portal = new Object("Image/Bg/wall3.png");
@@ -27,10 +27,10 @@ void PracScene::Init()
 
 void PracScene::Destroy()
 {
-	//for (auto& b : bts)
-	//{
-	//	b.second->Destroy();
-	//}
+	for (auto& b : bts)
+	{
+		b.second->Destroy();
+	}
 }
 
 void PracScene::Input(Event* e)
@@ -61,16 +61,16 @@ void PracScene::Input(Event* e)
 
 void PracScene::Update(const Vector2f& mousePostion)
 {
-	//for (auto& b : bts)
-	//{
-	//	b.second->Update(mousePostion);
-	//}
+	for (auto& b : bts)
+	{
+		b.second->Update(mousePostion);
+	}
 
-	//if (bts["Button"]->IsPressed())
-	//{
-	//	//scenes->push(new PracScene(scenes, window, soundSystem));
-	//	cout << "버튼" << endl;
-	//}
+	if (bts["Button"]->IsPressed())
+	{
+		//scenes->push(new PracScene(scenes, window, soundSystem));
+		cout << "버튼" << endl;
+	}
 
 	if (doll)
 	{
@@ -123,10 +123,10 @@ void PracScene::Update(const float& deltaTime)
 
 void PracScene::Render()
 {
-	//for (auto& b : bts)
-	//{
-	//	b.second->Render(window);
-	//}
+	for (auto& b : bts)
+	{
+		b.second->Render(window);
+	}
 
 	if (portal)
 	{

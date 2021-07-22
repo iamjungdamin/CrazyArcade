@@ -42,7 +42,38 @@ void JumpObject::Jump()
 
 void JumpObject::TargetMove(const Vector2f& targetPosition)
 {
-	position += Math::Normalize(targetPosition, position);
+	float length = Math::Length(targetPosition.x - getPosition().x, targetPosition.y - getPosition().y);
+	if (length < 100.f)
+	{
+		state = jCHASE;
+
+		if (length < 10.f)
+		{
+			patrolPosition;
+		}
+	}
+	else
+	{
+		state = jPATROL;
+	}
+
+	switch (state)
+	{
+	case jIDLE:
+		break;
+
+	case jPATROL:
+		position += Math::Normalize(patrolPosition, position);
+		break;
+
+	case jCHASE:
+		position += Math::Normalize(targetPosition, position);
+		break;
+
+	default:
+		break;
+	}
+
 	setPosition(position);
 }
 
@@ -59,6 +90,7 @@ void JumpObject::Update(const float& deltaTime)
 	{
 		position.x += 3.f;
 	}
+	setPosition(position);
 }
 
 void JumpObject::Update(const Vector2f& mousePostion)

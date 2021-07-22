@@ -17,6 +17,7 @@ private:
 	SoundSystem* soundSystem = nullptr;
 
 	Event evt;
+	Vector2f mousePosition{ 0.f, 0.f };
 
 	Clock timer;
 	float deltaTime = 0.f;

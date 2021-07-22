@@ -78,9 +78,10 @@ void Engine::Update()
 	deltaTime = timer.getElapsedTime().asSeconds();
 	timer.restart();
 	Input();
+
+	this->mousePosition = window->mapPixelToCoords(Mouse::getPosition(*window));
 	if (!scenes.empty())
 	{
-		scenes.top()->Update(deltaTime);
 
 		if (this->scenes.top()->GetQuit())
 		{
@@ -88,6 +89,11 @@ void Engine::Update()
 			delete this->scenes.top();
 			this->scenes.pop();
 			cout << "Pop Scene\n";
+		}
+		else
+		{
+			scenes.top()->Update(deltaTime);
+			scenes.top()->Update(mousePosition);
 		}
 	}
 	else
