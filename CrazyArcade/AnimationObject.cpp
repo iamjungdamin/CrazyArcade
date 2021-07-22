@@ -2,11 +2,6 @@
 #include "framework.h"
 #include "AnimationObject.h"
 
-AnimationObject::AnimationObject()
-{
-	Init();
-}
-
 void AnimationObject::Init()
 {
 }

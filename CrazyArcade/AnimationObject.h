@@ -3,7 +3,7 @@
 class AnimationObject : public Object
 {
 public:
-	AnimationObject();
+	AnimationObject() = default;
 	AnimationObject(const AnimationObject&) = delete;
 	AnimationObject& operator = (const AnimationObject&) = delete;
 	virtual ~AnimationObject() = default;

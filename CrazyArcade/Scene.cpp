@@ -71,6 +71,7 @@ void Scene::Input(Event* e)
 		break;
 
 	case Event::MouseButtonPressed:
+		//soundSystem->EffectPlay("Click");
 		break;
 
 	default:
