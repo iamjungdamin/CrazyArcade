@@ -17,10 +17,16 @@ void Engine::Init()
 {
 	this->window = new RenderWindow(VideoMode(800, 600), "Crazy Arcade");
 	this->window->setFramerateLimit(60);
+	//this->window->setVerticalSyncEnabled(true);
 
 	Image icon;
 	icon.loadFromFile("Textures/icon.jpg");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
+	this->event = new Event;
+	this->clock = new Clock;
+
+	engineClock = new Clock;
 
 	soundSystem = new SoundSystem("Sound/blank.wav");
 
@@ -37,6 +43,8 @@ void Engine::Init()
 
 void Engine::Destroy()
 {
+	DELETE(clock);
+	DELETE(event);
 	DELETE(window);
 
 	for (size_t i = 0; i < scenes.size(); ++i)
@@ -52,9 +60,9 @@ void Engine::Destroy()
 
 void Engine::Input()
 {
-	while (window->pollEvent(evt))
+	while (window->pollEvent(*event))
 	{
-		switch (evt.type)
+		switch (event->type)
 		{
 		case Event::Closed:
 			window->close();
@@ -63,7 +71,7 @@ void Engine::Input()
 		case Event::KeyPressed:
 			if (!scenes.empty())
 			{
-				scenes.top()->Input(&evt);
+				scenes.top()->Input(event);
 			}
 			break;
 
@@ -75,19 +83,34 @@ void Engine::Input()
 
 void Engine::Update()
 {
-	deltaTime = timer.getElapsedTime().asSeconds();
-	timer.restart();
-	Input();
+	this->deltaTime = clock->getElapsedTime().asSeconds();
+
+	if (clock->getElapsedTime().asSeconds() >= 1.f)
+	{
+		FPS = frame;
+		frame = 0;
+		clock->restart();
+		this->elapsedTime += deltaTime;
+		//cout << FPS << endl;
+
+		ostringstream Oss;
+		Oss << "Window FPS(" << FPS << ")";
+		window->setTitle(Oss.str());
+	}
+	++frame;
 
 	this->mousePosition = window->mapPixelToCoords(Mouse::getPosition(*window));
+	
 	if (!scenes.empty())
 	{
 
 		if (this->scenes.top()->GetQuit())
 		{
 			// 현재 실행중인 scene을 종료한다
-			delete this->scenes.top();
-			this->scenes.pop();
+			scenes.top()->Destroy();
+			scenes.top() = nullptr;
+			delete scenes.top();
+			scenes.pop();
 			cout << "Pop Scene\n";
 		}
 		else
@@ -107,7 +130,10 @@ void Engine::Render()
 	while (window->isOpen())
 	{
 		window->clear();
+
+		Input();
 		Update();
+
 		if (!scenes.empty())
 		{
 			scenes.top()->Render();

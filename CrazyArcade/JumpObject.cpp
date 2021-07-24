@@ -43,14 +43,9 @@ void JumpObject::Jump()
 void JumpObject::TargetMove(const Vector2f& targetPosition)
 {
 	float length = Math::Length(targetPosition.x - getPosition().x, targetPosition.y - getPosition().y);
-	if (length < 100.f)
+	if (length < 300.f)
 	{
 		state = jCHASE;
-
-		if (length < 10.f)
-		{
-			patrolPosition;
-		}
 	}
 	else
 	{

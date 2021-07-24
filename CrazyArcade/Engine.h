@@ -15,14 +15,18 @@ public:
 private:
 	RenderWindow* window = nullptr;
 	SoundSystem* soundSystem = nullptr;
+	stack<Scene*> scenes;
 
-	Event evt;
+	Event* event = nullptr;
 	Vector2f mousePosition{ 0.f, 0.f };
 
-	Clock timer;
+	Clock* clock = nullptr;
 	float deltaTime = 0.f;
+	float elapsedTime = 0.f;
 
-	stack<Scene*> scenes;
+	Clock* engineClock = nullptr;
+	unsigned int frame = 0;
+	unsigned int FPS = 0;
 
 private:
 	void Init();
