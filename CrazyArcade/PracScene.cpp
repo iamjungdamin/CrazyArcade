@@ -16,7 +16,7 @@ void PracScene::Init()
 	bts["Button2"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 300.f, 200.f });
 	bts["Button3"] = new ButtonObject("Image/Button/check.png", "Image/Button/check2.png", { 400.f, 200.f });
 
-	doll = new JumpObject("Image/diznidown00.png");
+	doll = new JumpObject("Image/diznidown (0).png");
 	portal = new Object("Image/Bg/wall3.png");
 
 	FloatRect viewRect{ 0.f, 0.f, 400.f, 300.f };

@@ -16,6 +16,7 @@ class Character : public AnimationObject
 {
 public:
 	Character();
+	Character(int player);
 	virtual ~Character();
 
 private:
@@ -31,7 +32,7 @@ private:
 	map<int, vector<Texture*>> characterAnimation;
 
 private:
-	virtual void Init();
+	virtual void Init(int player = 1);
 
 public:
 	virtual void Destroy();

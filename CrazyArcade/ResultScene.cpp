@@ -99,9 +99,8 @@ void ResultScene::Init()
 		walls.data()[i]->setPosition(wallPositions.data()[i].position);
 	}
 
-	animationObjects.push_back(new Character);
-
-	animationObjects.push_back(new secondCharacter);
+	animationObjects.push_back(new Character(1));
+	animationObjects.push_back(new Character(2));
 	animationObjects.push_back(new Bubble);
 }
 

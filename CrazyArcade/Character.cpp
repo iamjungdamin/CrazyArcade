@@ -6,64 +6,79 @@ Character::Character()
 	Init();
 }
 
+Character::Character(int player)
+{
+	Init(player);
+}
+
 Character::~Character()
 {
 }
 
-void Character::Init()
+void Character::Init(int player)
 {
 	Texture* tx = nullptr;
-	char filePath[50];
+	string Folder;
+	char filePath[30];
+
+	if (player == 1)
+	{
+		Folder = "Image/1P/";
+	}
+	else
+	{
+		Folder = "Image/2P/dizni";
+	}
 
 	tx = new Texture;
-	tx->loadFromFile("Image/diznidown00.png");
+	tx->loadFromFile(Folder + "down (0).png");
 	this->idleAnimation.push_back(tx);
 
 	for (int i = 0; i < 8; i++)
 	{
-		sprintf(filePath, "Image/dizniup%02d.png", i);
+		sprintf(filePath, "up (%d).png", i);
 		tx = new Texture;
-		tx->loadFromFile(filePath);
+		tx->loadFromFile(Folder + filePath);
 		this->upAnimation.push_back(tx);
 	}
 
 	for (int i = 0; i < 8; i++)
 	{
-		sprintf(filePath, "Image/diznidown%02d.png", i);
+		sprintf(filePath, "down (%d).png", i);
 		tx = new Texture;
-		tx->loadFromFile(filePath);
+		tx->loadFromFile(Folder + filePath);
 		this->downAnimation.push_back(tx);
 	}
 
 	for (int i = 0; i < 8; i++)
 	{
-		sprintf(filePath, "Image/diznileft%02d.png", i);
+		sprintf(filePath, "left (%d).png", i);
 		tx = new Texture;
-		tx->loadFromFile(filePath);
+		tx->loadFromFile(Folder + filePath);
 		this->leftAnimation.push_back(tx);
 	}
 
 	for (int i = 0; i < 8; i++)
 	{
-		sprintf(filePath, "Image/dizniright%02d.png", i);
+		sprintf(filePath, "right (%d).png", i);
 		tx = new Texture;
-		tx->loadFromFile(filePath);
+		tx->loadFromFile(Folder + filePath);
 		this->rightAnimation.push_back(tx);
 	}
 
 	for (int i = 0; i < 16; i++)
 	{
-		sprintf(filePath, "Image/diznitrapped%02d.png", i);
+		sprintf(filePath, "trapped (%d).png", i);
 		tx = new Texture;
-		tx->loadFromFile(filePath);
+		tx->loadFromFile(Folder + filePath);
 		this->trappedAnimation.push_back(tx);
 	}
 
 	for (int i = 0; i < 8; i++)
 	{
-		sprintf(filePath, "Image/diznidie%02d.png", i);
+		sprintf(filePath, "die (%d).png", i);
 		tx = new Texture;
-		tx->loadFromFile(filePath);
+		tx->loadFromFile(Folder + filePath);
 		this->diedAnimation.push_back(tx);
 	}
 
@@ -75,7 +90,14 @@ void Character::Init()
 	characterAnimation[TRAPPED] = trappedAnimation;
 	characterAnimation[DIED] = diedAnimation;
 
-	setPosition(Vector2f(100.f, 100.f));
+	if (player == 1)
+	{
+		setPosition(Vector2f(100.f, 100.f));
+	}
+	else
+	{
+		setPosition(Vector2f(300.f, 300.f));
+	}
 }
 
 void Character::Destroy()
