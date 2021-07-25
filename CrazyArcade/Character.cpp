@@ -102,11 +102,6 @@ void Character::Init(int player)
 	}
 }
 
-void Character::setState(int state)
-{
-	this->state = state;
-}
-
 void Character::Destroy()
 {
 	AnimationObject::Destroy();
@@ -127,5 +122,51 @@ void Character::Update(const float& deltaTime)
 		}
 		++keyFrame;
 		elapsedTime = 0.f;
+	}
+
+	if (player == 1) {
+		if (Keyboard::isKeyPressed(Keyboard::R)) {
+			state = UP;
+			move({ 0.f, -2.f });
+		}
+		else if (Keyboard::isKeyPressed(Keyboard::F)) {
+			state = DOWN;
+			move({ 0.f, 2.f });
+		}
+		else if (Keyboard::isKeyPressed(Keyboard::D)) {
+			state = LEFT;
+			move({ -2.f, 0.f });
+		}
+		else if (Keyboard::isKeyPressed(Keyboard::G)) {
+			state = RIGHT;
+			move({ 2.f, 0.f });
+		}
+		else
+		{
+			keyFrame = 0;
+		}
+	}
+
+	if (player == 2) {
+		if (Keyboard::isKeyPressed(Keyboard::Up)) {
+			state = UP;
+			move({ 0.f, -2.f });
+		}
+		else if (Keyboard::isKeyPressed(Keyboard::Down)) {
+			state = DOWN;
+			move({ 0.f, 2.f });
+		}
+		else if (Keyboard::isKeyPressed(Keyboard::Left)) {
+			state = LEFT;
+			move({ -2.f, 0.f });
+		}
+		else if (Keyboard::isKeyPressed(Keyboard::Right)) {
+			state = RIGHT;
+			move({ 2.f, 0.f });
+		}
+		else
+		{
+			keyFrame = 0;
+		}
 	}
 }

@@ -75,11 +75,11 @@ void ResultScene::Init()
 		}
 		else
 		{
-			info.position.y = 60 + i * 40;
+			info.position.y = (float)60 + i * 40;
 		}
 		for (int j = 0; j < 15; ++j)
 		{
-			info.position.x = 40 + 40 * j;
+			info.position.x = (float)40 + 40 * j;
 			info.positionToMap = Vector2i(j, i);
 			wallPositions.push_back(info);
 		}
@@ -99,8 +99,9 @@ void ResultScene::Init()
 		walls.data()[i]->setPosition(wallPositions.data()[i].position);
 	}
 
-	//animationObjects.push_back(p1);
-	//animationObjects.push_back(p2);
+	players[1] = new Character(1);
+	players[2] = new Character(2);
+
 	animationObjects.push_back(new Bubble);
 }
 
@@ -118,10 +119,6 @@ void ResultScene::Input(Event* e)
 	case Event::KeyPressed:
 		switch (e->key.code)
 		{
-		case Keyboard::Up:
-
-			break;
-
 		case Keyboard::LShift:
 			soundSystem->EffectPlay("Bubble");
 			break;
@@ -146,6 +143,11 @@ void ResultScene::Input(Event* e)
 void ResultScene::Update(const float& deltaTime)
 {
 	Scene::Update(deltaTime);
+
+	for (auto& p : players)
+	{
+		p.second->Update(deltaTime);
+	}
 }
 
 void ResultScene::Render()
@@ -181,5 +183,10 @@ void ResultScene::Render()
 		{
 			window->draw(*obj);
 		}
+	}
+	
+	for (auto& p : players)
+	{
+		window->draw(*p.second);
 	}
 }

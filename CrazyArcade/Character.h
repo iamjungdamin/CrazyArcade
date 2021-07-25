@@ -30,14 +30,11 @@ private:
 
 	int player;
 
-	map<int, vector<Texture*>> characterAnimation;
-
-protected:
 	int state = IDLE;
+	map<int, vector<Texture*>> characterAnimation;
 
 private:
 	virtual void Init(int player = 1);
-	void setState(int state);
 
 public:
 	virtual void Destroy();
