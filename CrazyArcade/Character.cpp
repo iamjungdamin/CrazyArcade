@@ -23,10 +23,12 @@ void Character::Init(int player)
 
 	if (player == 1)
 	{
+		this->player = 1;
 		Folder = "Image/1P/";
 	}
 	else
 	{
+		this->player = 2;
 		Folder = "Image/2P/dizni";
 	}
 
@@ -100,6 +102,11 @@ void Character::Init(int player)
 	}
 }
 
+void Character::setState(int state)
+{
+	this->state = state;
+}
+
 void Character::Destroy()
 {
 	AnimationObject::Destroy();
@@ -120,26 +127,5 @@ void Character::Update(const float& deltaTime)
 		}
 		++keyFrame;
 		elapsedTime = 0.f;
-	}
-
-	if (Keyboard::isKeyPressed(Keyboard::Up)) {
-		state = UP;
-		move({ 0.f, -2.f });
-	}
-	else if (Keyboard::isKeyPressed(Keyboard::Down)) {
-		state = DOWN;
-		move({ 0.f, 2.f });
-	}
-	else if (Keyboard::isKeyPressed(Keyboard::Left)) {
-		state = LEFT;
-		move({ -2.f, 0.f });
-	}
-	else if (Keyboard::isKeyPressed(Keyboard::Right)) {
-		state = RIGHT;
-		move({ 2.f, 0.f });
-	}
-	else
-	{
-		keyFrame = 0;
 	}
 }

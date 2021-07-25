@@ -99,8 +99,8 @@ void ResultScene::Init()
 		walls.data()[i]->setPosition(wallPositions.data()[i].position);
 	}
 
-	animationObjects.push_back(new Character(1));
-	animationObjects.push_back(new Character(2));
+	//animationObjects.push_back(p1);
+	//animationObjects.push_back(p2);
 	animationObjects.push_back(new Bubble);
 }
 
@@ -118,6 +118,10 @@ void ResultScene::Input(Event* e)
 	case Event::KeyPressed:
 		switch (e->key.code)
 		{
+		case Keyboard::Up:
+
+			break;
+
 		case Keyboard::LShift:
 			soundSystem->EffectPlay("Bubble");
 			break;

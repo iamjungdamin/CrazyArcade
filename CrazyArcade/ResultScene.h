@@ -8,6 +8,7 @@ struct ObstacleInfo
 };
 
 class ObstacleObject;
+class Character;
 
 class ResultScene : public Scene
 {
@@ -22,6 +23,9 @@ private:
 
 	int* activeWalls = nullptr;
 	map<ObstacleObject*, int> mObjects;
+
+	Character* p1 = new Character(1);
+	Character* p2 = new Character(2);
 
 private:
 	virtual void Init();

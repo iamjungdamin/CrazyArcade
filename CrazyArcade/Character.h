@@ -28,11 +28,16 @@ private:
 	vector<Texture*> trappedAnimation;
 	vector<Texture*> diedAnimation;
 
-	int state = IDLE;
+	int player;
+
 	map<int, vector<Texture*>> characterAnimation;
+
+protected:
+	int state = IDLE;
 
 private:
 	virtual void Init(int player = 1);
+	void setState(int state);
 
 public:
 	virtual void Destroy();
