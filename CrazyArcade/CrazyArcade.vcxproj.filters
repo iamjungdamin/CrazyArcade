@@ -49,9 +49,6 @@
     <Filter Include="소스 파일\03. Object\02. BackgroundObject">
       <UniqueIdentifier>{cf65d5bd-e518-4866-8c06-48a41b2408e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\03. Object\01. AnimationObject\04. secondCharacter">
-      <UniqueIdentifier>{b7d22ac1-b1a2-458e-bd3f-24b3e6141935}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\03. Object\02. BackgroundObject\00. BackgroundObject">
       <UniqueIdentifier>{c7e132df-ab2c-4f75-b3eb-34d1f1ac3473}</UniqueIdentifier>
     </Filter>
@@ -99,9 +96,6 @@
     <ClCompile Include="WaitingScene.cpp">
       <Filter>소스 파일\02. Scene\02. Wating</Filter>
     </ClCompile>
-    <ClCompile Include="secondCharacter.cpp">
-      <Filter>소스 파일\03. Object\01. AnimationObject\04. secondCharacter</Filter>
-    </ClCompile>
     <ClCompile Include="ResultScene.cpp">
       <Filter>소스 파일\02. Scene\03. Result</Filter>
     </ClCompile>
@@ -122,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="ButtonObject.cpp">
       <Filter>소스 파일\03. Object\03. ButtonObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PracMap.cpp">
+      <Filter>소스 파일\02. Scene\99. Practice</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +149,6 @@
     <ClInclude Include="WaitingScene.h">
       <Filter>소스 파일\02. Scene\02. Wating</Filter>
     </ClInclude>
-    <ClInclude Include="secondCharacter.h">
-      <Filter>소스 파일\03. Object\01. AnimationObject\04. secondCharacter</Filter>
-    </ClInclude>
     <ClInclude Include="ResultScene.h">
       <Filter>소스 파일\02. Scene\03. Result</Filter>
     </ClInclude>
@@ -175,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="ButtonObject.h">
       <Filter>소스 파일\03. Object\03. ButtonObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PracMap.h">
+      <Filter>소스 파일\02. Scene\99. Practice</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

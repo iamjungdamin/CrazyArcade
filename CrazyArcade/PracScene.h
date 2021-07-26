@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 
-class ButtonObject;
+class PracMap;
 
 class PracScene : public Scene
 {
@@ -13,10 +13,7 @@ public:
 	virtual ~PracScene() = default;
 
 private:
-	map<string, ButtonObject*> bts;	//buttons
-	Object* doll = nullptr;
-	Object* portal = nullptr;
-	//View* view;
+	PracMap* map = nullptr;
 
 private:
 	virtual void Init();
