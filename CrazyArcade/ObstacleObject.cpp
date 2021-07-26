@@ -21,7 +21,10 @@ ObstacleObject::~ObstacleObject()
 
 void ObstacleObject::Init()
 {
-	setPosition(100.f, 100.f);
+	//setPosition(100.f, 100.f);
+	
+	// TODO: 벽안에 숨은 아이템 설정하기
+	// item에 난수 넣기
 }
 
 void ObstacleObject::SetActive(bool isActive)

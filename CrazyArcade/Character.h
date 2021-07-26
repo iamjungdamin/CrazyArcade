@@ -29,6 +29,11 @@ private:
 	vector<Texture*> diedAnimation;
 
 	int player;
+	
+	int bubMax, fluidMax, speed;
+
+	// TODO: 능력치 설정
+	// 기본 능력치는 각각 다르고 아이템이랑 충돌시 +1씩
 
 	int state = IDLE;
 	map<int, vector<Texture*>> characterAnimation;

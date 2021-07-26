@@ -156,7 +156,10 @@
     <ClCompile Include="PracScene.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="secondCharacter.cpp" />
+    <ClCompile Include="secondCharacter.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="WaitingScene.cpp" />
   </ItemGroup>
@@ -175,7 +178,10 @@
     <ClInclude Include="PracScene.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="secondCharacter.h" />
+    <ClInclude Include="secondCharacter.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="WaitingScene.h" />
   </ItemGroup>

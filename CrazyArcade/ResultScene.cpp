@@ -102,7 +102,7 @@ void ResultScene::Init()
 	players[1] = new Character(1);
 	players[2] = new Character(2);
 
-	animationObjects.push_back(new Bubble);
+	//animationObjects.push_back(new Bubble);
 }
 
 void ResultScene::Destroy()
@@ -119,12 +119,20 @@ void ResultScene::Input(Event* e)
 	case Event::KeyPressed:
 		switch (e->key.code)
 		{
+
+		// TODO: 플레이어 위치 받아서 칸 안에 물풍선 놓기
+		// setOrigin() 함수 사용하여 캐릭터 포지션을 중앙으로 설정하고
+		// getPosition() 함수 사용하여 위치받고 13행 15열으로 나눠서
+		// New Bubble에 전달 (or map?)
+
 		case Keyboard::LShift:
 			soundSystem->EffectPlay("Bubble");
+			//animationObjects.push_back(new Bubble);
 			break;
 
 		case Keyboard::RShift:
 			soundSystem->EffectPlay("Bubble");
+			//animationObjects.push_back(new Bubble);
 			break;
 
 		default:
