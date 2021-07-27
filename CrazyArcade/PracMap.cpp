@@ -2,7 +2,7 @@
 #include "PracMap.h"
 
 PracMap::PracMap(const string& tileSetFilePath, const Vector2u& tileSize, const vector<int>& tiles, const Vector2u& mapSize)
-	:tiles(tiles)
+	:tiles(tiles), tileSize(tileSize), mapSize(mapSize)
 {
 	tileSet = new Texture;
 	tileSet->loadFromFile(tileSetFilePath);
@@ -13,6 +13,11 @@ PracMap::PracMap(const string& tileSetFilePath, const Vector2u& tileSize, const 
 	//정점의 개수를 미리 정해준다
 	vertices.resize(mapSize.x * mapSize.y * 4);
 
+	InitVertices();
+}
+
+void PracMap::InitVertices()
+{
 	for (unsigned int i = 0; i < mapSize.x; ++i)
 	{
 		for (unsigned int j = 0; j < mapSize.y; ++j)
@@ -34,11 +39,92 @@ PracMap::PracMap(const string& tileSetFilePath, const Vector2u& tileSize, const 
 
 			//텍스처에 대한 텍스코드를 정해준다
 			quad[0].texCoords = Vector2f(texU * tileX, texV * tileY);
-			quad[1].texCoords =Vector2f((texU + 1) * tileX, texV * tileY);
-			quad[2].texCoords =Vector2f((texU + 1) * tileX, (texV + 1) * tileY);
-			quad[3].texCoords =Vector2f(texU * tileX, (texV + 1) * tileY);
+			quad[1].texCoords = Vector2f((texU + 1) * tileX, texV * tileY);
+			quad[2].texCoords = Vector2f((texU + 1) * tileX, (texV + 1) * tileY);
+			quad[3].texCoords = Vector2f(texU * tileX, (texV + 1) * tileY);
 		}
 	}
+}
+
+void PracMap::Update(const Vector2f& mousePosition, int tileNumber)
+{
+	for (unsigned int i = 0; i < mapSize.x; ++i)
+	{
+		for (unsigned int j = 0; j < mapSize.y; ++j)
+		{
+			Vertex* quad = &vertices[(i + j * mapSize.x) * 4];
+
+			if ((mousePosition.x > quad[0].position.x && mousePosition.y > quad[0].position.y) &&
+				(mousePosition.x < quad[1].position.x && mousePosition.y > quad[1].position.y) &&
+				(mousePosition.x < quad[2].position.x && mousePosition.y < quad[2].position.y) &&
+				(mousePosition.x > quad[3].position.x && mousePosition.y < quad[3].position.y))
+			{
+				tiles.data()[i + j * mapSize.x] = tileNumber;
+
+				float tileX = (float)tileSize.x;
+				float tileY = (float)tileSize.y;
+
+				int texU = tileNumber % (tileSet->getSize().x / tileSize.x);
+				int texV = tileNumber / (tileSet->getSize().x / tileSize.x);
+
+				//텍스처에 대한 텍스코드를 정해준다
+				quad[0].texCoords = Vector2f(texU * tileX, texV * tileY);
+				quad[1].texCoords = Vector2f((texU + 1) * tileX, texV * tileY);
+				quad[2].texCoords = Vector2f((texU + 1) * tileX, (texV + 1) * tileY);
+				quad[3].texCoords = Vector2f(texU * tileX, (texV + 1) * tileY);
+			}
+		}
+	}
+}
+
+const IntRect& PracMap::GetTile(int tileNumber)
+{
+	int count = 0;
+
+	for (unsigned int i = 0; i < tileSet->getSize().y; i += tileSize.y)
+	{
+		for (unsigned int j = 0; j < tileSet->getSize().x; j += tileSize.x)
+		{
+			if (count == tileNumber)
+			{
+				imageRect = IntRect(j, i, 32, 32);
+				return imageRect;
+			}
+
+			count++;
+		}
+	}
+
+	return IntRect();
+}
+
+void PracMap::SaveMap(const string& mapName)
+{
+	ofstream out(mapName, ios::binary);
+
+	int size = tiles.size();
+	out.write((const char*)&size, sizeof(int));
+
+	// 4바이트 곱하기 8바이트를 하면 산술 오버플로우가 일어날수 있으므로
+	// 크기가 작은 자료형의 자료형을 큰 자료형과 맞춰준다
+	out.write((const char*)&tiles.data()[0], sizeof(int) * static_cast<__int64>(size));
+	out.close();
+}
+
+void PracMap::LoadMap(const string& mapName)
+{
+	ifstream in(mapName, ios::binary);
+
+	tiles.clear();
+
+	int size;
+	in.read((char*)&size, sizeof(int));
+	tiles.resize(size);
+
+	in.read((char*)&tiles.data()[0], sizeof(int) * static_cast<__int64>(size));
+	in.close();
+
+	InitVertices();
 }
 
 void PracMap::draw(RenderTarget& target, RenderStates states) const

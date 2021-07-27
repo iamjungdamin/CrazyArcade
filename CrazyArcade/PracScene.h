@@ -2,6 +2,7 @@
 #include "Scene.h"
 
 class PracMap;
+class Object;
 
 class PracScene : public Scene
 {
@@ -14,6 +15,9 @@ public:
 
 private:
 	PracMap* map = nullptr;
+	int tileNumber = 111;
+
+	Object* mouseCursor = nullptr;
 
 private:
 	virtual void Init();
@@ -25,4 +29,3 @@ public:
 	virtual void Update(const float& deltaTime);
 	virtual void Render();
 };
-
