@@ -7,6 +7,7 @@
 
 #include "PracMap.h"
 #include "Object.h"
+#include "BulletManager.h"
 
 PracScene::PracScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes,window,soundSystem)
@@ -28,6 +29,9 @@ void PracScene::Init()
 	mouseCursor = new Object("Textures/tileSet.png");
 	mouseCursor->setOrigin({});
 	mouseCursor->setTextureRect(map->GetTile(tileNumber));
+
+	player = new JumpObject("Image/2P/diznidown (0).png");
+	BulletMgr = new BulletManager(10);
 }
 
 void PracScene::Destroy()
@@ -41,7 +45,13 @@ void PracScene::Input(Event* e)
 	case Event::KeyPressed:
 		switch (e->key.code)
 		{
+		case Keyboard::LControl:
+			player->Jump();
+			player->setPosition(500.f, 500.f);
+			break;
+
 		case Keyboard::Space:
+			BulletMgr->Shoot({ 1.f,0.f }, { player->getPosition() }, 200.f);
 			break;
 
 		case Keyboard::F1:
@@ -121,6 +131,16 @@ void PracScene::Update(const float& deltaTime)
 	{
 		mouseCursor->Update(deltaTime);
 	}
+
+	if (player)
+	{
+		player->Update(deltaTime);
+	}
+
+	if (BulletMgr)
+	{
+		BulletMgr->Update(deltaTime);
+	}
 }
 
 void PracScene::Render()
@@ -130,9 +150,19 @@ void PracScene::Render()
 		window->draw(*map);
 	}
 
+	if (player)
+	{
+		player->Render(window);
+	}
+
 	if (mouseCursor)
 	{
 		mouseCursor->Render(window);
+	}
+
+	if (BulletMgr)
+	{
+		BulletMgr->Render(window);
 	}
 }
 

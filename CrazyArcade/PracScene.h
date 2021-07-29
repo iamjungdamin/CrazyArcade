@@ -3,6 +3,8 @@
 
 class PracMap;
 class Object;
+class JumpObject;
+class BulletManager;
 
 class PracScene : public Scene
 {
@@ -18,6 +20,9 @@ private:
 	int tileNumber = 111;
 
 	Object* mouseCursor = nullptr;
+
+	JumpObject* player;
+	BulletManager* BulletMgr = nullptr;
 
 private:
 	virtual void Init();

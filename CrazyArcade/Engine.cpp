@@ -84,6 +84,7 @@ void Engine::Input()
 void Engine::Update()
 {
 	this->deltaTime = clock->getElapsedTime().asSeconds();
+	clock->restart();
 
 	if (clock->getElapsedTime().asSeconds() >= 1.f)
 	{
