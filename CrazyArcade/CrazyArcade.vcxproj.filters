@@ -124,7 +124,7 @@
       <Filter>소스 파일\99. Practice</Filter>
     </ClCompile>
     <ClCompile Include="BulletManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\99. Practice</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +183,7 @@
       <Filter>소스 파일\99. Practice</Filter>
     </ClInclude>
     <ClInclude Include="BulletManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\99. Practice</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
