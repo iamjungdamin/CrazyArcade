@@ -8,6 +8,7 @@
 #include "PracMap.h"
 #include "Object.h"
 #include "BulletManager.h"
+#include "MonsterObject.h"
 
 PracScene::PracScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes,window,soundSystem)
@@ -30,8 +31,12 @@ void PracScene::Init()
 	mouseCursor->setOrigin({});
 	mouseCursor->setTextureRect(map->GetTile(tileNumber));
 
-	player = new JumpObject("Image/2P/diznidown (0).png");
-	BulletMgr = new BulletManager(10);
+	player = new JumpObject("Image/2P/diznidown (0).png", { 500,500 });
+
+	for (int i = 0; i < 10; ++i)
+	{
+		monsters.push_back(new MonsterObject("Image/1P/down (0).png", Vector2f(rand() % 1080, rand() % 720)));
+	}
 }
 
 void PracScene::Destroy()
@@ -48,10 +53,6 @@ void PracScene::Input(Event* e)
 		case Keyboard::LControl:
 			player->Jump();
 			player->setPosition(500.f, 500.f);
-			break;
-
-		case Keyboard::Space:
-			BulletMgr->Shoot({ 1.f,0.f }, { player->getPosition() }, 200.f);
 			break;
 
 		case Keyboard::F1:
@@ -120,8 +121,37 @@ void PracScene::Update(const Vector2f& mousePostion)
 	{
 		if (Mouse::isButtonPressed(Mouse::Left))
 		{
-			map->Update(mousePostion, tileNumber);
+			player->Shoot();
+			//map->Update(mousePostion, tileNumber);
 		}
+	}
+
+	if (player)
+	{
+		player->Update(mousePostion);
+		cout << player->getPosition().x << ", " << player->getPosition().y << endl;
+	}
+	player->GetBulletMgr()->GetBullets();
+	
+	for (auto& bullet : *player->GetBulletMgr()->GetBullets())
+	{
+		for (auto& monster : monsters)
+		{
+			if (monster->IsActive() && bullet->IsActive())
+			{
+				if (bullet->getGlobalBounds().intersects(monster->getGlobalBounds()))
+				{
+					bullet->SetActive(false);
+					bullet->setPosition({});
+					monster->SetHp(monster->GetHp() - bullet->GetBulletType());
+				}
+			}
+		}
+	}
+
+	for (auto& monster:monsters)
+	{
+		monster->Update(mousePostion);
 	}
 }
 
@@ -137,9 +167,9 @@ void PracScene::Update(const float& deltaTime)
 		player->Update(deltaTime);
 	}
 
-	if (BulletMgr)
+	for (auto& monster : monsters)
 	{
-		BulletMgr->Update(deltaTime);
+		monster->Update(deltaTime);
 	}
 }
 
@@ -155,14 +185,14 @@ void PracScene::Render()
 		player->Render(window);
 	}
 
+	for (auto& monster : monsters)
+	{
+		monster->Render(window);
+	}
+
 	if (mouseCursor)
 	{
 		mouseCursor->Render(window);
-	}
-
-	if (BulletMgr)
-	{
-		BulletMgr->Render(window);
 	}
 }
 

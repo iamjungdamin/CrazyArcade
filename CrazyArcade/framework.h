@@ -15,6 +15,7 @@ using namespace sf;
 #include <map>
 #include <vector>
 #include <stack>
+#include <random>
 
 using namespace std;
 
@@ -36,5 +37,13 @@ namespace Math
 		float length = Length(direction.x, direction.y);
 
 		return { direction.x / length, direction.y / length };
+	}
+
+	inline int RandomIntager(const int& minimum, const int& maximum)
+	{
+		static uniform_real_distribution<float> urd(minimum, maximum);
+		static default_random_engine dre;
+
+		return urd(dre);
 	}
 }

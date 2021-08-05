@@ -8,6 +8,8 @@ enum STATE
 	jCHASE
 };
 
+class BulletManager;
+
 class JumpObject : public Object
 {
 public:
@@ -27,11 +29,19 @@ private:
 	float speed = 50.f;
 	float gravity = 2.f;
 
+	BulletManager* bulletMgr = nullptr;
+	float shootCoolTime = 0.1f;
+
+	Vector2f bulletTargetPosition{ 0.f, 0.f };
+
 public:
 	virtual void Destroy();
 
+	BulletManager* GetBulletMgr();
+
 	void JumpUpdate(const float& deltaTime);
 	void Jump();
+	void Shoot();
 	void TargetMove(const Vector2f& targetPosition);
 	
 	virtual void Update(const float& deltaTime);

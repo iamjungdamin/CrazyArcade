@@ -5,6 +5,7 @@ class PracMap;
 class Object;
 class JumpObject;
 class BulletManager;
+class MonsterObject;
 
 class PracScene : public Scene
 {
@@ -22,7 +23,7 @@ private:
 	Object* mouseCursor = nullptr;
 
 	JumpObject* player;
-	BulletManager* BulletMgr = nullptr;
+	vector<MonsterObject*> monsters;
 
 private:
 	virtual void Init();

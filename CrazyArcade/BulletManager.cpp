@@ -41,6 +41,11 @@ void BulletManager::Shoot(const Vector2f& dir, const Vector2f& position, const f
 	}
 }
 
+vector<Bullet*>* BulletManager::GetBullets()
+{
+	return &bullets;
+}
+
 void BulletManager::Update(const float& deltaTime)
 {
 	for (auto& bullet : bullets)
@@ -56,10 +61,10 @@ void BulletManager::Update(const Vector2f& mousePosition)
 {
 	for (auto& bullet : bullets)
 	{
-		if (bullet->IsActive())
-		{
+		//if (bullet->IsActive())
+		//{
 			bullet->Update(mousePosition);
-		}
+		//}
 	}
 }
 

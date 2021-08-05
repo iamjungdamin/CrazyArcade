@@ -126,6 +126,9 @@
     <ClCompile Include="BulletManager.cpp">
       <Filter>소스 파일\99. Practice</Filter>
     </ClCompile>
+    <ClCompile Include="MonsterObject.cpp">
+      <Filter>소스 파일\99. Practice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -183,6 +186,9 @@
       <Filter>소스 파일\99. Practice</Filter>
     </ClInclude>
     <ClInclude Include="BulletManager.h">
+      <Filter>소스 파일\99. Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterObject.h">
       <Filter>소스 파일\99. Practice</Filter>
     </ClInclude>
   </ItemGroup>
