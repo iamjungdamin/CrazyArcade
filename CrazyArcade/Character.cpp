@@ -107,6 +107,10 @@ void Character::Destroy()
 	AnimationObject::Destroy();
 }
 
+void Character::AddBubble()
+{
+}
+
 void Character::Update(const float& deltaTime)
 {
 	elapsedTime += deltaTime;

@@ -25,7 +25,6 @@ void Engine::Init()
 
 	this->event = new Event;
 	this->clock = new Clock;
-
 	engineClock = new Clock;
 
 	soundSystem = new SoundSystem("Sound/blank.wav");
@@ -37,6 +36,7 @@ void Engine::Init()
 	soundSystem->AddSoundEffect("Sound/btnClick.wav", "Click");
 	soundSystem->AddSoundEffect("Sound/gameStart.wav", "Start");
 	soundSystem->AddSoundEffect("Sound/add.wav", "Bubble");
+
 	//this->scenes.push(new LoginScene(&scenes, window, soundSystem));
 	this->scenes.push(new PracScene(&scenes, window, soundSystem));
 }
@@ -69,6 +69,8 @@ void Engine::Input()
 			break;
 
 		case Event::KeyPressed:
+		case Event::MouseButtonPressed:
+		case Event::MouseWheelScrolled:
 			if (!scenes.empty())
 			{
 				scenes.top()->Input(event);
@@ -86,11 +88,11 @@ void Engine::Update()
 	this->deltaTime = clock->getElapsedTime().asSeconds();
 	clock->restart();
 
-	if (clock->getElapsedTime().asSeconds() >= 1.f)
+	if (engineClock->getElapsedTime().asSeconds() >= 1.f)
 	{
 		FPS = frame;
 		frame = 0;
-		clock->restart();
+		engineClock->restart();
 		this->elapsedTime += deltaTime;
 		//cout << FPS << endl;
 
@@ -126,9 +128,9 @@ void Engine::Update()
 	}
 }
 
-void Engine::Render()
+bool Engine::Render()
 {
-	while (window->isOpen())
+	if (window->isOpen())
 	{
 		window->clear();
 
@@ -139,10 +141,11 @@ void Engine::Render()
 		{
 			scenes.top()->Render();
 		}
-		else
-		{
-			window->close();
-		}
 		window->display();
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }

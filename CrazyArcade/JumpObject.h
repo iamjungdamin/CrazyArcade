@@ -9,6 +9,7 @@ enum STATE
 };
 
 class BulletManager;
+class BubbleManager;
 
 class JumpObject : public Object
 {
@@ -34,6 +35,9 @@ private:
 
 	Vector2f bulletTargetPosition{ 0.f, 0.f };
 
+	BubbleManager* bubbleMgr = nullptr;
+	float addBubbleCoolTime = 0.5f;
+
 public:
 	virtual void Destroy();
 
@@ -42,6 +46,7 @@ public:
 	void JumpUpdate(const float& deltaTime);
 	void Jump();
 	void Shoot();
+	void AddBubble();
 	void TargetMove(const Vector2f& targetPosition);
 	
 	virtual void Update(const float& deltaTime);

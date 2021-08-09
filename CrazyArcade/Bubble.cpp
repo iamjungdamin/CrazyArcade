@@ -22,14 +22,6 @@ void Bubble::Init()
 		tx->loadFromFile(filePath);
 		this->idleAnimation.push_back(tx);
 	}
-
-	for (int i = 0; i < 3; i++)
-	{
-		sprintf(filePath, "Image/Bubble/bomb%02d.png", i);
-		tx = new Texture;
-		tx->loadFromFile(filePath);
-		this->bombAnimation.push_back(tx);
-	}
 	
 	bubbleAnimation[bIDLE] = idleAnimation;
 	bubbleAnimation[bBOMB] = bombAnimation;

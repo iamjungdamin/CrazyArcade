@@ -9,17 +9,19 @@ public:
 	virtual ~AnimationObject() = default;
 
 protected:
-	vector<Texture*> vAnimation;
-	size_t keyFrame = 0;
 	float elapsedTime;
+	float frameTime = 0.1f;
+	unsigned int keyFrame = 0;
 
 private:
 	virtual void Init();
 
 public:
 	virtual void Destroy();
+
 	virtual void Update(const float& deltaTime);
 	virtual void Update(const Vector2f& mousePosition);
+
 	virtual void Render(RenderTarget* target);
 };
 

@@ -6,6 +6,8 @@ class Object;
 class JumpObject;
 class BulletManager;
 class MonsterObject;
+class BombObject;
+class EffectObject;
 
 class PracScene : public Scene
 {
@@ -24,6 +26,10 @@ private:
 
 	JumpObject* player;
 	vector<MonsterObject*> monsters;
+
+	BombObject* bomb = nullptr;
+
+	EffectObject* effect = nullptr;
 
 private:
 	virtual void Init();

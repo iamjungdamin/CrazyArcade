@@ -30,10 +30,10 @@ private:
 
 private:
 	void Init();
+	void Destroy();
 	void Input();
 	void Update();
 
 public:
-	void Destroy();
-	void Render();
+	bool Render();
 };

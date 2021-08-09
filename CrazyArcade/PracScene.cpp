@@ -9,6 +9,8 @@
 #include "Object.h"
 #include "BulletManager.h"
 #include "MonsterObject.h"
+#include "BombObject.h"
+#include "EffectObject.h"
 
 PracScene::PracScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes,window,soundSystem)
@@ -37,6 +39,13 @@ void PracScene::Init()
 	{
 		monsters.push_back(new MonsterObject("Image/1P/down (0).png", Vector2f(rand() % 1080, rand() % 720)));
 	}
+
+	bomb = new BombObject("Textures/bubble.png");
+	bomb->setPosition(200.f, 200.f);
+
+	effect = new EffectObject();
+	bomb->setPosition(200.f, 200.f);
+
 }
 
 void PracScene::Destroy()
@@ -53,6 +62,10 @@ void PracScene::Input(Event* e)
 		case Keyboard::LControl:
 			player->Jump();
 			player->setPosition(500.f, 500.f);
+			break;
+
+		case Keyboard::Space:
+			player->AddBubble();
 			break;
 
 		case Keyboard::F1:
@@ -129,7 +142,6 @@ void PracScene::Update(const Vector2f& mousePostion)
 	if (player)
 	{
 		player->Update(mousePostion);
-		cout << player->getPosition().x << ", " << player->getPosition().y << endl;
 	}
 	player->GetBulletMgr()->GetBullets();
 	
@@ -153,6 +165,16 @@ void PracScene::Update(const Vector2f& mousePostion)
 	{
 		monster->Update(mousePostion);
 	}
+
+	if (bomb)
+	{
+		bomb->Update(mousePostion);
+	}
+
+	if (effect)
+	{
+		effect->Update(mousePostion);
+	}
 }
 
 void PracScene::Update(const float& deltaTime)
@@ -170,6 +192,16 @@ void PracScene::Update(const float& deltaTime)
 	for (auto& monster : monsters)
 	{
 		monster->Update(deltaTime);
+	}
+
+	if (bomb)
+	{
+		bomb->Update(deltaTime);
+	}
+
+	if (effect)
+	{
+		effect->Update(deltaTime);
 	}
 }
 
@@ -194,5 +226,14 @@ void PracScene::Render()
 	{
 		mouseCursor->Render(window);
 	}
-}
 
+	if (bomb)
+	{
+		bomb->Render(window);
+	}
+
+	if (effect)
+	{
+		effect->Render(window);
+	}
+}

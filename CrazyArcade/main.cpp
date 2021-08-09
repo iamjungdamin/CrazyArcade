@@ -4,7 +4,6 @@
 int main()
 {
 	Engine engine;
-	engine.Render();
 
-	engine.Destroy();
+	while (engine.Render());
 }

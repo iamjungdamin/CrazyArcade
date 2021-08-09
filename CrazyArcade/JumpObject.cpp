@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "JumpObject.h"
 #include "BulletManager.h"
+#include "BubbleManager.h"
 
 JumpObject::JumpObject()
 {
@@ -10,6 +11,7 @@ JumpObject::JumpObject(const string& textureFilePath)
 	:Object(textureFilePath)
 {
 	bulletMgr = new BulletManager(100);
+	bubbleMgr = new BubbleManager(10);
 }
 
 JumpObject::JumpObject(const string& textureFilePath, const Vector2f& position)
@@ -17,6 +19,7 @@ JumpObject::JumpObject(const string& textureFilePath, const Vector2f& position)
 {
 	this->position = position;
 	bulletMgr = new BulletManager(100);
+	bubbleMgr = new BubbleManager(10);
 }
 
 void JumpObject::Destroy()
@@ -60,6 +63,18 @@ void JumpObject::Shoot()
 	}
 }
 
+void JumpObject::AddBubble()
+{
+	if (bubbleMgr)
+	{
+		if (addBubbleCoolTime <= 0.f)
+		{
+			bubbleMgr->AddBubble(this->getPosition());
+			addBubbleCoolTime = 0.5f;
+		}
+	}
+}
+
 void JumpObject::TargetMove(const Vector2f& targetPosition)
 {
 	float length = Math::Length(targetPosition.x - getPosition().x, targetPosition.y - getPosition().y);
@@ -98,6 +113,7 @@ void JumpObject::Update(const float& deltaTime)
 	Object::Update(deltaTime);
 	//JumpUpdate(deltaTime);
 	shootCoolTime -= deltaTime;
+	addBubbleCoolTime -= deltaTime;
 
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
@@ -121,6 +137,11 @@ void JumpObject::Update(const float& deltaTime)
 	{
 		bulletMgr->Update(deltaTime);
 	}
+
+	if (bubbleMgr)
+	{
+		bubbleMgr->Update(deltaTime);
+	}
 }
 
 void JumpObject::Update(const Vector2f& mousePostion)
@@ -131,6 +152,11 @@ void JumpObject::Update(const Vector2f& mousePostion)
 	{
 		bulletMgr->Update(mousePostion);
 	}
+
+	if (bubbleMgr)
+	{
+		bubbleMgr->Update(mousePostion);
+	}
 }
 
 void JumpObject::Render(RenderTarget* target)
@@ -140,5 +166,10 @@ void JumpObject::Render(RenderTarget* target)
 	if (bulletMgr)
 	{
 		bulletMgr->Render(target);
+	}
+
+	if (bubbleMgr)
+	{
+		bubbleMgr->Render(target);
 	}
 }

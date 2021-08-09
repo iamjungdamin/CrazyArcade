@@ -43,6 +43,9 @@ private:
 
 public:
 	virtual void Destroy();
+
+	void AddBubble();
+
 	virtual void Update(const float& deltaTime);
 };
 

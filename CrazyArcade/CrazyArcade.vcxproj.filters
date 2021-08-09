@@ -129,6 +129,15 @@
     <ClCompile Include="MonsterObject.cpp">
       <Filter>소스 파일\99. Practice</Filter>
     </ClCompile>
+    <ClCompile Include="BubbleManager.cpp">
+      <Filter>소스 파일\03. Object\01. AnimationObject\03. Bubble</Filter>
+    </ClCompile>
+    <ClCompile Include="BombObject.cpp">
+      <Filter>소스 파일\99. Practice</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectObject.cpp">
+      <Filter>소스 파일\99. Practice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -189,6 +198,15 @@
       <Filter>소스 파일\99. Practice</Filter>
     </ClInclude>
     <ClInclude Include="MonsterObject.h">
+      <Filter>소스 파일\99. Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="BubbleManager.h">
+      <Filter>소스 파일\03. Object\01. AnimationObject\03. Bubble</Filter>
+    </ClInclude>
+    <ClInclude Include="BombObject.h">
+      <Filter>소스 파일\99. Practice</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectObject.h">
       <Filter>소스 파일\99. Practice</Filter>
     </ClInclude>
   </ItemGroup>
