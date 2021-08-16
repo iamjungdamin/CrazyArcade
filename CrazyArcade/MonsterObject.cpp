@@ -69,7 +69,7 @@ void MonsterObject::Update(const float& deltaTime)
 		this->isActive = false;
 	}
 
-	move(dir * deltaTime * speed);
+	//move(dir * deltaTime * speed);
 }
 
 void MonsterObject::Update(const Vector2f& mousePosition)

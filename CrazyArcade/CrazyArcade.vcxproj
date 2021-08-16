@@ -165,6 +165,8 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="WaitingScene.cpp" />
+    <ClCompile Include="WallManager.cpp" />
+    <ClCompile Include="WallObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationObject.h" />
@@ -190,6 +192,8 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="WaitingScene.h" />
+    <ClInclude Include="WallManager.h" />
+    <ClInclude Include="WallObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

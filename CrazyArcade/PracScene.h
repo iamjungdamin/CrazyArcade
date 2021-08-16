@@ -8,6 +8,8 @@ class BulletManager;
 class MonsterObject;
 class BombObject;
 class EffectObject;
+class WallObject;
+class WallManager;
 
 class PracScene : public Scene
 {
@@ -30,6 +32,8 @@ private:
 	BombObject* bomb = nullptr;
 
 	EffectObject* effect = nullptr;
+
+	WallManager* wallMgr = nullptr;
 
 private:
 	virtual void Init();

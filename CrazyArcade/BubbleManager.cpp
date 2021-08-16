@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "BubbleManager.h"
+#include "MonsterObject.h"
 
 BubbleManager::BubbleManager(const size_t& bubbleCount)
 {
@@ -41,6 +42,26 @@ void BubbleManager::AddBubble(const Vector2f& position)
 vector<BombObject*>* BubbleManager::GetBubbles()
 {
 	return &bubbles;
+}
+
+void BubbleManager::DamageBoom(Object* object)
+{
+	static int count = 0;
+
+	for (auto& bubble : bubbles)
+	{
+		if (object && bubble->GetBoomArea().intersects(object->getGlobalBounds()) && bubble->IsDamaging())
+		{
+			if (dynamic_cast<MonsterObject*>(object))
+			{
+				dynamic_cast<MonsterObject*>(object)->SetHp(dynamic_cast<MonsterObject*>(object)->GetHp() - 1);
+			}
+			else
+			{
+				cout << "다른 오브젝트가 데미지를 입었습니다\n";
+			}
+		}
+	}
 }
 
 void BubbleManager::Update(const float& deltaTime)

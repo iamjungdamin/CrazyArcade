@@ -19,6 +19,8 @@ public:
 
 	vector<BombObject*>* GetBubbles();
 
+	void DamageBoom(Object* object);
+
 	void Update(const float& deltaTime);
 	void Update(const Vector2f& mousePosition);
 

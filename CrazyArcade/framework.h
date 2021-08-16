@@ -20,6 +20,7 @@ using namespace sf;
 using namespace std;
 
 #define DELETE(x) if(x) delete (x); (x) = nullptr
+constexpr float PI = 3.14159265f;
 
 namespace Math
 {
@@ -41,9 +42,20 @@ namespace Math
 
 	inline int RandomIntager(const int& minimum, const int& maximum)
 	{
-		static uniform_real_distribution<float> urd(minimum, maximum);
+		static uniform_int_distribution<int> urd(minimum, maximum);
 		static default_random_engine dre;
 
 		return urd(dre);
+	}
+
+	inline const float RotateAxis(const Vector2f& vec1, const Vector2f& vec2, const float& angle)
+	{
+		Vector2f normal = Math::Normalize(vec1, vec2);
+		return (atan2(normal.y, normal.x) * 180 / PI) + angle;
+	}
+
+	inline const float RotateAxis(const Vector2f& vec, const float& angle)
+	{
+		return (atan2(vec.y, vec.x) * 180 / PI) + angle;
 	}
 }

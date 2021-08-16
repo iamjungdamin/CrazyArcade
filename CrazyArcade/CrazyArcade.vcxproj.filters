@@ -67,6 +67,15 @@
     <Filter Include="소스 파일\99. Practice">
       <UniqueIdentifier>{b88aaa44-ce99-4ada-a6d7-854ab56d8afc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Practice\Wall">
+      <UniqueIdentifier>{ba314284-d5c2-4f56-aff2-67dd564ad0cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Practice\Bullet">
+      <UniqueIdentifier>{759a6bb7-ac71-4c19-b347-975bcf876f90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Practice\Bomb">
+      <UniqueIdentifier>{510c4790-0988-455c-b7a8-b3eb65a98251}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -120,23 +129,29 @@
     <ClCompile Include="JumpObject.cpp">
       <Filter>소스 파일\99. Practice</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>소스 파일\99. Practice</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletManager.cpp">
-      <Filter>소스 파일\99. Practice</Filter>
-    </ClCompile>
     <ClCompile Include="MonsterObject.cpp">
       <Filter>소스 파일\99. Practice</Filter>
     </ClCompile>
-    <ClCompile Include="BubbleManager.cpp">
-      <Filter>소스 파일\03. Object\01. AnimationObject\03. Bubble</Filter>
+    <ClCompile Include="WallObject.cpp">
+      <Filter>소스 파일\99. Practice\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="WallManager.cpp">
+      <Filter>소스 파일\99. Practice\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>소스 파일\99. Practice\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>소스 파일\99. Practice\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="BombObject.cpp">
-      <Filter>소스 파일\99. Practice</Filter>
+      <Filter>소스 파일\99. Practice\Bomb</Filter>
     </ClCompile>
     <ClCompile Include="EffectObject.cpp">
-      <Filter>소스 파일\99. Practice</Filter>
+      <Filter>소스 파일\99. Practice\Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="BubbleManager.cpp">
+      <Filter>소스 파일\99. Practice\Bomb</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -191,23 +206,29 @@
     <ClInclude Include="JumpObject.h">
       <Filter>소스 파일\99. Practice</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>소스 파일\99. Practice</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletManager.h">
-      <Filter>소스 파일\99. Practice</Filter>
-    </ClInclude>
     <ClInclude Include="MonsterObject.h">
       <Filter>소스 파일\99. Practice</Filter>
     </ClInclude>
-    <ClInclude Include="BubbleManager.h">
-      <Filter>소스 파일\03. Object\01. AnimationObject\03. Bubble</Filter>
+    <ClInclude Include="WallObject.h">
+      <Filter>소스 파일\99. Practice\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="WallManager.h">
+      <Filter>소스 파일\99. Practice\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>소스 파일\99. Practice\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>소스 파일\99. Practice\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="BombObject.h">
-      <Filter>소스 파일\99. Practice</Filter>
+      <Filter>소스 파일\99. Practice\Bomb</Filter>
     </ClInclude>
     <ClInclude Include="EffectObject.h">
-      <Filter>소스 파일\99. Practice</Filter>
+      <Filter>소스 파일\99. Practice\Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="BubbleManager.h">
+      <Filter>소스 파일\99. Practice\Bomb</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #include "JumpObject.h"
 #include "BulletManager.h"
 #include "BubbleManager.h"
+#include "WallManager.h"
 
 JumpObject::JumpObject()
 {
@@ -29,6 +30,23 @@ void JumpObject::Destroy()
 BulletManager* JumpObject::GetBulletMgr()
 {
 	return bulletMgr;
+}
+
+BubbleManager* JumpObject::GetBubbleMgr()
+{
+	return bubbleMgr;
+}
+
+const Vector2f& JumpObject::GetDirection()
+{
+	return this->direction;
+}
+
+void JumpObject::SetDirection(const Vector2f& direction)
+{
+	this->direction = direction;
+	position += direction;
+	setPosition(position);
 }
 
 void JumpObject::JumpUpdate(const float& deltaTime)
@@ -115,22 +133,30 @@ void JumpObject::Update(const float& deltaTime)
 	shootCoolTime -= deltaTime;
 	addBubbleCoolTime -= deltaTime;
 
+	direction = { 0.f,0.f };
+
 	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
-		position.x -= 3.f;
+		direction = { -1.f, 0.f };
+		direction *= 3.f;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
-		position.x += 3.f;
+		direction = { 1.f, 0.f };
+		direction *= 3.f;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Up))
 	{
-		position.y -= 3.f;
+		direction = { 0.f, -1.f };
+		direction *= 3.f;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Down))
 	{
-		position.y += 3.f;
+		direction = { 0.f, 1.f };
+		direction *= 3.f;
 	}
+	position += direction;
+
 	setPosition(position);
 
 	if (bulletMgr)
@@ -141,6 +167,12 @@ void JumpObject::Update(const float& deltaTime)
 	if (bubbleMgr)
 	{
 		bubbleMgr->Update(deltaTime);
+		bubbleMgr->DamageBoom(this);
+	}
+
+	if (wallMgr)
+	{
+		wallMgr->Update(deltaTime);
 	}
 }
 

@@ -12,6 +12,9 @@
 #include "BombObject.h"
 #include "EffectObject.h"
 
+#include "WallObject.h"
+#include "WallManager.h"
+
 PracScene::PracScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes,window,soundSystem)
 {
@@ -45,6 +48,14 @@ void PracScene::Init()
 
 	effect = new EffectObject();
 	bomb->setPosition(200.f, 200.f);
+
+	wallMgr = new WallManager(10);
+
+	WallObject* object = new WallObject("Textures/wall1.png", { 300.f,300.f });
+	//wallMgr->setWall(object);
+
+	object = new WallObject("Textures/wall3.png", { 500.f,500.f });
+	//wallMgr->setWall(object);
 
 }
 
@@ -126,9 +137,9 @@ void PracScene::Input(Event* e)
 	}
 }
 
-void PracScene::Update(const Vector2f& mousePostion)
+void PracScene::Update(const Vector2f& mousePosition)
 {
-	mouseCursor->setPosition(mousePostion.x + 32, mousePostion.y - 32);
+	mouseCursor->setPosition(mousePosition.x + 32, mousePosition.y - 32);
 
 	if (map)
 	{
@@ -141,7 +152,7 @@ void PracScene::Update(const Vector2f& mousePostion)
 
 	if (player)
 	{
-		player->Update(mousePostion);
+		player->Update(mousePosition);
 	}
 	player->GetBulletMgr()->GetBullets();
 	
@@ -159,21 +170,32 @@ void PracScene::Update(const Vector2f& mousePostion)
 				}
 			}
 		}
+
+		if (wallMgr)
+		{
+			wallMgr->CollisionUpdate(bullet);
+		}
 	}
 
 	for (auto& monster:monsters)
 	{
-		monster->Update(mousePostion);
+		monster->Update(mousePosition);
 	}
 
 	if (bomb)
 	{
-		bomb->Update(mousePostion);
+		bomb->Update(mousePosition);
 	}
 
 	if (effect)
 	{
-		effect->Update(mousePostion);
+		effect->Update(mousePosition);
+	}
+
+	if (wallMgr)
+	{
+		wallMgr->Update(mousePosition);
+		wallMgr->CollisionUpdate(player);
 	}
 }
 
@@ -202,6 +224,11 @@ void PracScene::Update(const float& deltaTime)
 	if (effect)
 	{
 		effect->Update(deltaTime);
+	}
+
+	if (wallMgr)
+	{
+		wallMgr->Update(deltaTime);
 	}
 }
 
@@ -235,5 +262,10 @@ void PracScene::Render()
 	if (effect)
 	{
 		effect->Render(window);
+	}
+
+	if (wallMgr)
+	{
+		wallMgr->Render(window);
 	}
 }

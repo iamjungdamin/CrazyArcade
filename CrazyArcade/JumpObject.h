@@ -10,6 +10,7 @@ enum STATE
 
 class BulletManager;
 class BubbleManager;
+class WallManager;
 
 class JumpObject : public Object
 {
@@ -23,6 +24,7 @@ private:
 	Vector2f position{ 0.f,0.f };
 	Vector2f velocity{ 0.f,0.f };
 	Vector2f acceleration{ 0.f,0.f };
+	Vector2f direction{ 0.f,0.f };
 
 	Vector2f patrolPosition = { 0.f, 0.f };
 	int state = jIDLE;
@@ -38,10 +40,16 @@ private:
 	BubbleManager* bubbleMgr = nullptr;
 	float addBubbleCoolTime = 0.5f;
 
+	WallManager* wallMgr = nullptr;
+
 public:
 	virtual void Destroy();
 
 	BulletManager* GetBulletMgr();
+	BubbleManager* GetBubbleMgr();
+
+	const Vector2f& GetDirection();
+	void SetDirection(const Vector2f& direction);
 
 	void JumpUpdate(const float& deltaTime);
 	void Jump();
