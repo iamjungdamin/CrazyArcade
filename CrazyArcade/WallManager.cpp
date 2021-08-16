@@ -1,13 +1,14 @@
 #include "framework.h"
 #include "WallManager.h"
 #include "JumpObject.h"
+#include "Bullet.h"
 
 WallManager::WallManager(const size_t& wallCount)
 {
-	//for (auto i = 0; i < wallCount; ++i)
-	//{
-	//	walls.push_back(new WallObject("Textures/wall3.png"));
-	//}
+	for (auto i = 0; i < wallCount; ++i)
+	{
+		walls.push_back(new WallObject("Textures/wall3.png"));
+	}
 }
 
 void WallManager::Destroy()
@@ -18,14 +19,11 @@ void WallManager::Destroy()
 	}
 }
 
-void WallManager::SetWall(const Vector2f& position)
+void WallManager::SetWall(WallObject* object)
 {
-	for (auto& wall : walls)
+	if (object)
 	{
-		if (!wall->IsActive())
-		{
-			wall->setPosition(position);
-		}
+		walls.push_back(object);
 	}
 }
 
@@ -50,55 +48,34 @@ void WallManager::Update(const Vector2f& mousePosition)
 	}
 }
 
-void WallManager::Update(const float& deltaTime, Object* object)
+void WallManager::CollisionUpdate(Object* object)
 {
 	for (auto& wall : walls)
 	{
-		if (object && wall)
+		if (object && object->IsActive())
 		{
-			if (object->getGlobalBounds().intersects(wall->getGlobalBounds()))
+			if (dynamic_cast<Bullet*>(object))
 			{
-				if (dynamic_cast<JumpObject*>(object))
+				if (dynamic_cast<Bullet*>(object)->getGlobalBounds().intersects(wall->getGlobalBounds()))
 				{
-
+					object->SetActive(false);
+					object->setPosition({});
 				}
-				else
-				{
+			}
 
+			if (dynamic_cast<JumpObject*>(object))
+			{
+				Vector2f dir = dynamic_cast<JumpObject*>(object)->GetDirection();
+				if (dir.x != 0.f || dir.y != 0.f)
+				{
+					if (wall->getGlobalBounds().intersects(object->getGlobalBounds()))
+					{
+						dynamic_cast<JumpObject*>(object)->SetDirection(-dir);
+					}
 				}
 			}
 		}
 	}
-}
-
-void WallManager::CollisionUpdate(Object* object)
-{
-	//for (auto& wall : walls)
-	//{
-	//	if (object && object->IsActive())
-	//	{
-	//		if (dynamic_cast<Bullet*>(object))
-	//		{
-	//			if (dynamic_cast<Bullet*>(object)->getGlobalBounds().intersects(wall->getGlobalBounds()))
-	//			{
-	//				object->SetActive(false);
-	//				object->setPosition({});
-	//			}
-	//		}
-
-	//		if (dynamic_cast<JumpObject*>(object))
-	//		{
-	//			Vector2f dir = dynamic_cast<JumpObject*>(object)->GetDirection();
-	//			if (dir.x != 0.f || dir.y != 0.f)
-	//			{
-	//				if (wall->getGlobalBounds().intersects(object->getGlobalBounds()))
-	//				{
-	//					dynamic_cast<JumpObject*>(object)->SetDirection(-dir);
-	//				}
-	//			}
-	//		}
-	//	}
-	//}
 }
 
 void WallManager::Render(RenderTarget* target)

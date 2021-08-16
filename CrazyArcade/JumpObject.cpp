@@ -12,7 +12,7 @@ JumpObject::JumpObject(const string& textureFilePath)
 	:Object(textureFilePath)
 {
 	bulletMgr = new BulletManager(100);
-	bubbleMgr = new BubbleManager(10);
+	bubbleMgr = new BubbleManager(7);
 }
 
 JumpObject::JumpObject(const string& textureFilePath, const Vector2f& position)

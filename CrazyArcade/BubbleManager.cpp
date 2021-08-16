@@ -46,8 +46,6 @@ vector<BombObject*>* BubbleManager::GetBubbles()
 
 void BubbleManager::DamageBoom(Object* object)
 {
-	static int count = 0;
-
 	for (auto& bubble : bubbles)
 	{
 		if (object && bubble->GetBoomArea().intersects(object->getGlobalBounds()) && bubble->IsDamaging())

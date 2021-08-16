@@ -15,12 +15,11 @@ private:
 public:
 	void Destroy();
 
-	void SetWall(const Vector2f& position);
+	void SetWall(WallObject* object);
 	vector<WallObject*>* getWalls();
 
 	void Update(const float& deltaTime);
 	void Update(const Vector2f& mousePosition);
-	void Update(const float& deltaTime, Object* object);
 
 	void CollisionUpdate(Object* object);
 

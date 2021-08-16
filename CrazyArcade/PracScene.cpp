@@ -52,10 +52,10 @@ void PracScene::Init()
 	wallMgr = new WallManager(10);
 
 	WallObject* object = new WallObject("Textures/wall1.png", { 300.f,300.f });
-	//wallMgr->setWall(object);
+	wallMgr->SetWall(object);
 
-	object = new WallObject("Textures/wall3.png", { 500.f,500.f });
-	//wallMgr->setWall(object);
+	object = new WallObject("Textures/wall3.png", { 400.f,500.f });
+	wallMgr->SetWall(object);
 
 }
 
@@ -214,6 +214,12 @@ void PracScene::Update(const float& deltaTime)
 	for (auto& monster : monsters)
 	{
 		monster->Update(deltaTime);
+
+		if (player)
+		{
+			// player->GetBubbleMgr()->DamageBoom(monster);
+			// TODO :
+		}
 	}
 
 	if (bomb)
