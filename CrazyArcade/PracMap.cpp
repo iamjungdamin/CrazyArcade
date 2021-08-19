@@ -99,7 +99,7 @@ void PracMap::Update(Object* object)
 						(objectPosition.x < quad[2].position.x && objectPosition.y < quad[2].position.y) &&
 						(objectPosition.x > quad[3].position.x + 16 && objectPosition.y < quad[3].position.y))
 					{
-						if (tiles.data()[(i + 1) + j * mapSize.x] == 111 && (dir.x > 0.f))//¿À¸¥ÂÊ
+						if (tiles.data()[(i + 1) + j * mapSize.x] == 111)
 						{
 							dynamic_cast<JumpObject*>(object)->SetDirection(-dir);
 						}
@@ -112,7 +112,7 @@ void PracMap::Update(Object* object)
 						(objectPosition.x < quad[2].position.x - 16 && objectPosition.y < quad[2].position.y) &&
 						(objectPosition.x > quad[3].position.x && objectPosition.y < quad[3].position.y))
 					{
-						if (tiles.data()[(i - 1) + j * mapSize.x] == 111 && (dir.x < 0.f))
+						if (tiles.data()[(i - 1) + j * mapSize.x] == 111)
 						{
 							dynamic_cast<JumpObject*>(object)->SetDirection(-dir);
 						}
@@ -125,7 +125,7 @@ void PracMap::Update(Object* object)
 						(objectPosition.x < quad[2].position.x && objectPosition.y < quad[2].position.y) &&
 						(objectPosition.x > quad[3].position.x && objectPosition.y < quad[3].position.y))
 					{
-						if (tiles.data()[i + (j + 1) * mapSize.x] == 111 && (dir.y > 0.f))
+						if (tiles.data()[i + (j + 1) * mapSize.x] == 111)
 						{
 							dynamic_cast<JumpObject*>(object)->SetDirection(-dir);
 						}
@@ -138,7 +138,7 @@ void PracMap::Update(Object* object)
 						(objectPosition.x < quad[2].position.x && objectPosition.y < quad[2].position.y - 16) &&
 						(objectPosition.x > quad[3].position.x && objectPosition.y < quad[3].position.y - 16))
 					{
-						if (tiles.data()[i + (j - 1) * mapSize.x] == 111 && (dir.y < 0.f))
+						if (tiles.data()[i + (j - 1) * mapSize.x] == 111)
 						{
 							dynamic_cast<JumpObject*>(object)->SetDirection(-dir);
 						}

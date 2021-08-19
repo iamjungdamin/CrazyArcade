@@ -147,7 +147,6 @@ void PracScene::Update(const Vector2f& mousePosition)
 
 		if (Mouse::isButtonPressed(Mouse::Right))
 		{
-			player->Shoot();
 			map->Update(mousePosition, tileNumber);
 		}
 	}
