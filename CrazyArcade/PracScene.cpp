@@ -143,37 +143,43 @@ void PracScene::Update(const Vector2f& mousePosition)
 
 	if (map)
 	{
-		if (Mouse::isButtonPressed(Mouse::Left))
+		map->Update(player);
+
+		if (Mouse::isButtonPressed(Mouse::Right))
 		{
 			player->Shoot();
-			//map->Update(mousePostion, tileNumber);
+			map->Update(mousePosition, tileNumber);
 		}
 	}
 
 	if (player)
 	{
-		player->Update(mousePosition);
-	}
-	player->GetBulletMgr()->GetBullets();
-	
-	for (auto& bullet : *player->GetBulletMgr()->GetBullets())
-	{
-		for (auto& monster : monsters)
+		if (Mouse::isButtonPressed(Mouse::Left))
 		{
-			if (monster->IsActive() && bullet->IsActive())
+			player->Shoot();
+		}
+		player->Update(mousePosition);
+		player->GetBulletMgr()->GetBullets();
+
+		for (auto& bullet : *player->GetBulletMgr()->GetBullets())
+		{
+			for (auto& monster : monsters)
 			{
-				if (bullet->getGlobalBounds().intersects(monster->getGlobalBounds()))
+				if (monster->IsActive() && bullet->IsActive())
 				{
-					bullet->SetActive(false);
-					bullet->setPosition({});
-					monster->SetHp(monster->GetHp() - bullet->GetBulletType());
+					if (bullet->getGlobalBounds().intersects(monster->getGlobalBounds()))
+					{
+						bullet->SetActive(false);
+						bullet->setPosition({});
+						monster->SetHp(monster->GetHp() - bullet->GetBulletType());
+					}
 				}
 			}
-		}
 
-		if (wallMgr)
-		{
-			wallMgr->CollisionUpdate(bullet);
+			if (wallMgr)
+			{
+				wallMgr->CollisionUpdate(bullet);
+			}
 		}
 	}
 

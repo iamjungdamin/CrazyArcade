@@ -1,5 +1,7 @@
 #pragma once
 
+class Object;
+
 class PracMap : public Drawable, public Transformable
 {
 public:
@@ -29,6 +31,7 @@ private:
 
 public:
 	void Update(const Vector2f& mousePosition, int tileNumber);
+	void Update(Object* object);
 
 	const IntRect& GetTile(int tileNumber);
 
