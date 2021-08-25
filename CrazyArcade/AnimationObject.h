@@ -10,6 +10,7 @@ public:
 
 protected:
 	float elapsedTime;
+	vector<Texture*> vAnimation;
 	float frameTime = 0.1f;
 	unsigned int keyFrame = 0;
 
@@ -18,6 +19,11 @@ private:
 
 public:
 	virtual void Destroy();
+
+	void SetAnimation(vector<Texture*>* animation, float fameTime = 0.2f);
+
+	const unsigned int& GetKeyFrame();
+	void SetKeyFrame(unsigned int& frame);
 
 	virtual void Update(const float& deltaTime);
 	virtual void Update(const Vector2f& mousePosition);

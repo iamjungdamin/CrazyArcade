@@ -10,6 +10,7 @@ class BombObject;
 class EffectObject;
 class WallObject;
 class WallManager;
+class CrossBomb;
 
 class PracScene : public Scene
 {
@@ -34,6 +35,8 @@ private:
 	EffectObject* effect = nullptr;
 
 	WallManager* wallMgr = nullptr;
+
+	CrossBomb* newBomb = nullptr;
 
 private:
 	virtual void Init();

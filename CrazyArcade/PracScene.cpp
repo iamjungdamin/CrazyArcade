@@ -14,6 +14,7 @@
 
 #include "WallObject.h"
 #include "WallManager.h"
+#include "CrossBomb.h"
 
 PracScene::PracScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes,window,soundSystem)
@@ -40,14 +41,13 @@ void PracScene::Init()
 
 	for (int i = 0; i < 10; ++i)
 	{
-		monsters.push_back(new MonsterObject("Image/1P/down (0).png", Vector2f(rand() % 1080, rand() % 720)));
+		monsters.push_back(new MonsterObject("Image/1P/down (0).png", Vector2f((float)(rand() % 1080), (float)(rand() % 720))));
 	}
 
 	bomb = new BombObject("Textures/bubble.png");
 	bomb->setPosition(200.f, 200.f);
 
 	effect = new EffectObject();
-	bomb->setPosition(200.f, 200.f);
 
 	wallMgr = new WallManager(10);
 
@@ -57,6 +57,8 @@ void PracScene::Init()
 	object = new WallObject("Textures/wall3.png", { 400.f,500.f });
 	wallMgr->SetWall(object);
 
+	newBomb = new CrossBomb();
+	newBomb->setPosition(400.f, 200.f);
 }
 
 void PracScene::Destroy()
@@ -107,6 +109,10 @@ void PracScene::Input(Event* e)
 			}
 
 			mouseCursor->setTextureRect(map->GetTile(tileNumber));
+			break;
+
+		case Keyboard::B:
+			newBomb->SetBomb(player->getPosition());
 			break;
 
 		default:
@@ -202,6 +208,11 @@ void PracScene::Update(const Vector2f& mousePosition)
 		wallMgr->Update(mousePosition);
 		wallMgr->CollisionUpdate(player);
 	}
+
+	if (newBomb)
+	{
+		newBomb->Update(mousePosition);
+	}
 }
 
 void PracScene::Update(const float& deltaTime)
@@ -241,6 +252,11 @@ void PracScene::Update(const float& deltaTime)
 	{
 		wallMgr->Update(deltaTime);
 	}
+
+	if (newBomb)
+	{
+		newBomb->Update(deltaTime);
+	}
 }
 
 void PracScene::Render()
@@ -278,5 +294,10 @@ void PracScene::Render()
 	if (wallMgr)
 	{
 		wallMgr->Render(window);
+	}
+
+	if (newBomb)
+	{
+		newBomb->Render(window);
 	}
 }

@@ -153,6 +153,9 @@
     <ClCompile Include="BubbleManager.cpp">
       <Filter>소스 파일\99. Practice\Bomb</Filter>
     </ClCompile>
+    <ClCompile Include="CrossBomb.cpp">
+      <Filter>소스 파일\99. Practice\Bomb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -228,6 +231,9 @@
       <Filter>소스 파일\99. Practice\Bomb</Filter>
     </ClInclude>
     <ClInclude Include="BubbleManager.h">
+      <Filter>소스 파일\99. Practice\Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossBomb.h">
       <Filter>소스 파일\99. Practice\Bomb</Filter>
     </ClInclude>
   </ItemGroup>
