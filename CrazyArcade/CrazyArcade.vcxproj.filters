@@ -76,6 +76,9 @@
     <Filter Include="소스 파일\99. Practice\Bomb">
       <UniqueIdentifier>{510c4790-0988-455c-b7a8-b3eb65a98251}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Practice\Monster">
+      <UniqueIdentifier>{5730d592-5ac6-4636-b1ad-5e6ca61c21bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -129,9 +132,6 @@
     <ClCompile Include="JumpObject.cpp">
       <Filter>소스 파일\99. Practice</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterObject.cpp">
-      <Filter>소스 파일\99. Practice</Filter>
-    </ClCompile>
     <ClCompile Include="WallObject.cpp">
       <Filter>소스 파일\99. Practice\Wall</Filter>
     </ClCompile>
@@ -155,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="CrossBomb.cpp">
       <Filter>소스 파일\99. Practice\Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterObject.cpp">
+      <Filter>소스 파일\99. Practice\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterManager.cpp">
+      <Filter>소스 파일\99. Practice\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -209,9 +215,6 @@
     <ClInclude Include="JumpObject.h">
       <Filter>소스 파일\99. Practice</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterObject.h">
-      <Filter>소스 파일\99. Practice</Filter>
-    </ClInclude>
     <ClInclude Include="WallObject.h">
       <Filter>소스 파일\99. Practice\Wall</Filter>
     </ClInclude>
@@ -235,6 +238,12 @@
     </ClInclude>
     <ClInclude Include="CrossBomb.h">
       <Filter>소스 파일\99. Practice\Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterObject.h">
+      <Filter>소스 파일\99. Practice\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterManager.h">
+      <Filter>소스 파일\99. Practice\Monster</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

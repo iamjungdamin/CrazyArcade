@@ -84,11 +84,11 @@ void Character::Init(int player)
 		this->diedAnimation.push_back(tx);
 	}
 
-	characterAnimation[IDLE] = idleAnimation;
-	characterAnimation[UP] = upAnimation;
-	characterAnimation[DOWN] = downAnimation;
-	characterAnimation[LEFT] = leftAnimation;
-	characterAnimation[RIGHT] = rightAnimation;
+	characterAnimation[MOVE_IDLE] = idleAnimation;
+	characterAnimation[MOVE_UP] = upAnimation;
+	characterAnimation[MOVE_DOWN] = downAnimation;
+	characterAnimation[MOVE_LEFT] = leftAnimation;
+	characterAnimation[MOVE_RIGHT] = rightAnimation;
 	characterAnimation[TRAPPED] = trappedAnimation;
 	characterAnimation[DIED] = diedAnimation;
 
@@ -130,19 +130,19 @@ void Character::Update(const float& deltaTime)
 
 	if (player == 1) {
 		if (Keyboard::isKeyPressed(Keyboard::R)) {
-			state = UP;
+			state = MOVE_UP;
 			move({ 0.f, -2.f });
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::F)) {
-			state = DOWN;
+			state = MOVE_DOWN;
 			move({ 0.f, 2.f });
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::D)) {
-			state = LEFT;
+			state = MOVE_LEFT;
 			move({ -2.f, 0.f });
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::G)) {
-			state = RIGHT;
+			state = MOVE_RIGHT;
 			move({ 2.f, 0.f });
 		}
 		else
@@ -153,19 +153,19 @@ void Character::Update(const float& deltaTime)
 
 	if (player == 2) {
 		if (Keyboard::isKeyPressed(Keyboard::Up)) {
-			state = UP;
+			state = MOVE_UP;
 			move({ 0.f, -2.f });
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Down)) {
-			state = DOWN;
+			state = MOVE_DOWN;
 			move({ 0.f, 2.f });
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Left)) {
-			state = LEFT;
+			state = MOVE_LEFT;
 			move({ -2.f, 0.f });
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Right)) {
-			state = RIGHT;
+			state = MOVE_RIGHT;
 			move({ 2.f, 0.f });
 		}
 		else

@@ -3,11 +3,11 @@
 
 enum CHARACTER_STATE
 {
-	IDLE,
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT,
+	MOVE_IDLE,
+	MOVE_UP,
+	MOVE_DOWN,
+	MOVE_LEFT,
+	MOVE_RIGHT,
 	TRAPPED,
 	DIED
 };
@@ -35,7 +35,7 @@ private:
 	// TODO: 능력치 설정
 	// 기본 능력치는 각각 다르고 아이템이랑 충돌시 +1씩
 
-	int state = IDLE;
+	int state = MOVE_IDLE;
 	map<int, vector<Texture*>> characterAnimation;
 
 private:

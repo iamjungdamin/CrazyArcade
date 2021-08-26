@@ -11,6 +11,7 @@ class EffectObject;
 class WallObject;
 class WallManager;
 class CrossBomb;
+class MonsterManager;
 
 class PracScene : public Scene
 {
@@ -28,7 +29,6 @@ private:
 	Object* mouseCursor = nullptr;
 
 	JumpObject* player;
-	vector<MonsterObject*> monsters;
 
 	BombObject* bomb = nullptr;
 
@@ -37,6 +37,8 @@ private:
 	WallManager* wallMgr = nullptr;
 
 	CrossBomb* newBomb = nullptr;
+
+	MonsterManager* monsterMgr = nullptr;
 
 private:
 	virtual void Init();

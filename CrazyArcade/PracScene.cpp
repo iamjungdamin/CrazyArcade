@@ -15,6 +15,7 @@
 #include "WallObject.h"
 #include "WallManager.h"
 #include "CrossBomb.h"
+#include "MonsterManager.h"
 
 PracScene::PracScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
 	:Scene(scenes,window,soundSystem)
@@ -39,10 +40,7 @@ void PracScene::Init()
 
 	player = new JumpObject("Image/2P/diznidown (0).png", { 500,500 });
 
-	for (int i = 0; i < 10; ++i)
-	{
-		monsters.push_back(new MonsterObject("Image/1P/down (0).png", Vector2f((float)(rand() % 1080), (float)(rand() % 720))));
-	}
+	monsterMgr = new MonsterManager();
 
 	bomb = new BombObject("Textures/bubble.png");
 	bomb->setPosition(200.f, 200.f);
@@ -166,31 +164,33 @@ void PracScene::Update(const Vector2f& mousePosition)
 		player->Update(mousePosition);
 		player->GetBulletMgr()->GetBullets();
 
-		for (auto& bullet : *player->GetBulletMgr()->GetBullets())
-		{
-			for (auto& monster : monsters)
-			{
-				if (monster->IsActive() && bullet->IsActive())
-				{
-					if (bullet->getGlobalBounds().intersects(monster->getGlobalBounds()))
-					{
-						bullet->SetActive(false);
-						bullet->setPosition({});
-						monster->SetHp(monster->GetHp() - bullet->GetBulletType());
-					}
-				}
-			}
+		//for (auto& bullet : *player->GetBulletMgr()->GetBullets())
+		//{
+		//	for (auto& monster : monsters)
+		//	{
+		//		if (monster->IsActive() && bullet->IsActive())
+		//		{
+		//			if (bullet->getGlobalBounds().intersects(monster->getGlobalBounds()))
+		//			{
+		//				bullet->SetActive(false);
+		//				bullet->setPosition({});
+		//				monster->SetHp(monster->GetHp() - bullet->GetBulletType());
+		//			}
+		//		}
+		//	}
 
-			if (wallMgr)
-			{
-				wallMgr->CollisionUpdate(bullet);
-			}
-		}
+		//	if (wallMgr)
+		//	{
+		//		wallMgr->CollisionUpdate(bullet);
+		//	}
+		//}
 	}
 
-	for (auto& monster:monsters)
+	if (monsterMgr)
 	{
-		monster->Update(mousePosition);
+		monsterMgr->Update(mousePosition);
+		monsterMgr->UpdateWithBullet(player->GetBulletMgr());
+		monsterMgr->UpdateWithObject(player);
 	}
 
 	if (bomb)
@@ -227,15 +227,9 @@ void PracScene::Update(const float& deltaTime)
 		player->Update(deltaTime);
 	}
 
-	for (auto& monster : monsters)
+	if (monsterMgr)
 	{
-		monster->Update(deltaTime);
-
-		if (player)
-		{
-			// player->GetBubbleMgr()->DamageBoom(monster);
-			// TODO :
-		}
+		monsterMgr->Update(deltaTime);
 	}
 
 	if (bomb)
@@ -271,9 +265,9 @@ void PracScene::Render()
 		player->Render(window);
 	}
 
-	for (auto& monster : monsters)
+	if (monsterMgr)
 	{
-		monster->Render(window);
+		monsterMgr->Render(window);
 	}
 
 	if (mouseCursor)

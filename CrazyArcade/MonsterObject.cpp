@@ -25,7 +25,8 @@ void MonsterObject::Init()
 {
 	hpBar = new Object("Textures/hpbar.png");
 	HP = 48;
-	dir = Vector2f(Math::RandomIntager(-1, 1), Math::RandomIntager(-1, 1));
+	//dir = Vector2f(Math::RandomIntager(-1, 1), Math::RandomIntager(-1, 1));
+	dir = Vector2f((float)Math::RandomIntager(0,1080), (float)Math::RandomIntager(0,720));
 }
 
 void MonsterObject::Destroy()
@@ -52,12 +53,6 @@ void MonsterObject::Update(const float& deltaTime)
 {
 	Object::Update(deltaTime);
 
-	if (!(getPosition().x <= 1080 && getPosition().x >= 0 &&
-		getPosition().y <= 720 && getPosition().y >= 0))
-	{
-		setPosition(Math::RandomIntager(0, 1080), Math::RandomIntager(0, 720));
-	}
-
 	if (hpBar && HP)
 	{
 		hpBar->Update(deltaTime);
@@ -75,6 +70,51 @@ void MonsterObject::Update(const float& deltaTime)
 void MonsterObject::Update(const Vector2f& mousePosition)
 {
 	Object::Update(mousePosition);
+}
+
+void MonsterObject::ChasingUpdate(Object* object)
+{
+	float distance = Math::Length(object->getPosition(), this->getPosition());
+	float targetDistance = Math::Length(targetPosition, this->getPosition());
+	Vector2f direction;
+
+	if (distance <= 100)
+	{
+		oldState = state;
+		state = mCHASING;
+	}
+	else
+	{
+		oldState = state;
+		state = mIDLE;
+	}
+
+	if (oldState != state || targetDistance <= 5)
+	{
+		targetPosition = Vector2f((float)Math::RandomIntager(0, 1080), (float)Math::RandomIntager(0, 720));
+	}
+
+	switch (state)
+	{
+	case mIDLE:
+		direction = Math::Normalize(targetPosition, this->getPosition());
+		this->move(direction);
+		break;
+
+	case mCHASING:
+		direction = Math::Normalize(object->getPosition(), this->getPosition());
+		this->move(direction);
+
+		if (this->getGlobalBounds().intersects(object->getGlobalBounds()))
+		{
+			cout << "플레이어 HP 감소\n";
+		}
+		break;
+
+	default:
+		break;
+	}
+
 }
 
 void MonsterObject::Render(RenderTarget* target)

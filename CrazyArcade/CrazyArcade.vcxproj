@@ -157,6 +157,7 @@
     <ClCompile Include="JumpObject.cpp" />
     <ClCompile Include="LoginScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MonsterManager.cpp" />
     <ClCompile Include="MonsterObject.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObstacleObject.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="JumpObject.h" />
     <ClInclude Include="LoginScene.h" />
+    <ClInclude Include="MonsterManager.h" />
     <ClInclude Include="MonsterObject.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObstacleObject.h" />
