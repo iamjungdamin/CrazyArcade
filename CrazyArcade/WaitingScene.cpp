@@ -17,7 +17,7 @@ WaitingScene::WaitingScene(stack<Scene*>* scenes, RenderWindow* window, SoundSys
 
 void WaitingScene::Init()
 {
-	backGround = new BackgroundObject("Image/Bg/Waiting.png");
+	backGround = new BackgroundObject("Image/Bg/Waiting2.png");
 
 	soundSystem->MusicPlay("waiting");
 }

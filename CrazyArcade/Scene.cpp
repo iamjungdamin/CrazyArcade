@@ -51,10 +51,6 @@ void Scene::Input(Event* e)
 	case Event::KeyPressed:
 		switch (e->key.code)
 		{
-		case Keyboard::Escape:
-			scenes->top()->EndScene();
-			break;
-
 		case Keyboard::F7:
 			soundSystem->volDown();
 			soundSystem->effectVolDown();

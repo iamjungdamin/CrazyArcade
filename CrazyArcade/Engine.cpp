@@ -37,8 +37,8 @@ void Engine::Init()
 	soundSystem->AddSoundEffect("Sound/gameStart.wav", "Start");
 	soundSystem->AddSoundEffect("Sound/add.wav", "Bubble");
 
-	//this->scenes.push(new LoginScene(&scenes, window, soundSystem));
-	this->scenes.push(new PracScene(&scenes, window, soundSystem));
+	this->scenes.push(new LoginScene(&scenes, window, soundSystem));
+	//this->scenes.push(new PracScene(&scenes, window, soundSystem));
 }
 
 void Engine::Destroy()
@@ -96,9 +96,9 @@ void Engine::Update()
 		this->elapsedTime += deltaTime;
 		//cout << FPS << endl;
 
-		ostringstream Oss;
-		Oss << "Window FPS(" << FPS << ")";
-		window->setTitle(Oss.str());
+		//ostringstream Oss;
+		//Oss << "Window FPS(" << FPS << ")";
+		//window->setTitle(Oss.str());
 	}
 	++frame;
 
