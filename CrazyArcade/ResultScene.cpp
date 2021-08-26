@@ -4,7 +4,6 @@
 #include "BackgroundObject.h"
 
 #include "Character.h"
-#include "secondCharacter.h"
 #include "Bubble.h"
 
 ResultScene::ResultScene()

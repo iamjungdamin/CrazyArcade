@@ -29,7 +29,7 @@ void Character::Init(int player)
 	else
 	{
 		this->player = 2;
-		Folder = "Image/2P/dizni";
+		Folder = "Image/2P/dizniblue";
 	}
 
 	tx = new Texture;
