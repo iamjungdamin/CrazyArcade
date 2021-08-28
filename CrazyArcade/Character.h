@@ -12,6 +12,8 @@ enum CHARACTER_STATE
 	DIED
 };
 
+class CrossBomb;
+
 class Character : public AnimationObject
 {
 public:
@@ -38,6 +40,9 @@ private:
 	int state = MOVE_IDLE;
 	map<int, vector<Texture*>> characterAnimation;
 
+public:
+	CrossBomb* bomb = nullptr;
+
 private:
 	virtual void Init(int player = 1);
 
@@ -47,5 +52,7 @@ public:
 	void AddBubble();
 
 	virtual void Update(const float& deltaTime);
+	virtual void Update(const Vector2f& mousePosition);
+	virtual void Render(RenderTarget* target);
 };
 

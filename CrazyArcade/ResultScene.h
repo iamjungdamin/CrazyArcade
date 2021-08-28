@@ -9,6 +9,7 @@ struct ObstacleInfo
 
 class ObstacleObject;
 class Character;
+class CrossBomb;
 
 class ResultScene : public Scene
 {
@@ -25,6 +26,9 @@ private:
 	map<ObstacleObject*, int> mObjects;
 
 	map <int, Character*> players;
+
+	CrossBomb* bBomb = nullptr;
+	CrossBomb* dBomb = nullptr;
 
 private:
 	virtual void Init();

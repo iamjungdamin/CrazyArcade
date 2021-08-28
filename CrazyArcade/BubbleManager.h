@@ -4,7 +4,7 @@
 class BubbleManager final
 {
 public:
-	BubbleManager(const size_t& bubbleCount = 2);
+	BubbleManager(const size_t& bubbleCount = 1);
 	BubbleManager(const BubbleManager&) = delete;
 	BubbleManager& operator=(const BubbleManager&) = delete;
 	~BubbleManager() = default;

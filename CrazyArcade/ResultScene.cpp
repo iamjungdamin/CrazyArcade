@@ -4,7 +4,7 @@
 #include "BackgroundObject.h"
 
 #include "Character.h"
-#include "Bubble.h"
+#include "CrossBomb.h"
 
 ResultScene::ResultScene()
 {
@@ -102,6 +102,8 @@ void ResultScene::Init()
 	players[2] = new Character(2);
 
 	//animationObjects.push_back(new Bubble);
+	bBomb = new CrossBomb();
+	dBomb = new CrossBomb();
 }
 
 void ResultScene::Destroy()
@@ -126,12 +128,14 @@ void ResultScene::Input(Event* e)
 
 		case Keyboard::LShift:
 			soundSystem->EffectPlay("Bubble");
-			//animationObjects.push_back(new Bubble);
+			//players[1]->AddBubble();
+			bBomb->SetBomb(players[1]->getPosition());
 			break;
 
 		case Keyboard::RShift:
 			soundSystem->EffectPlay("Bubble");
-			//animationObjects.push_back(new Bubble);
+			//players[2]->AddBubble();
+			dBomb->SetBomb(players[2]->getPosition());
 			break;
 
 		default:
@@ -154,6 +158,16 @@ void ResultScene::Update(const float& deltaTime)
 	for (auto& p : players)
 	{
 		p.second->Update(deltaTime);
+	}
+
+	if (bBomb)
+	{
+		bBomb->Update(deltaTime);
+	}
+
+	if (dBomb)
+	{
+		dBomb->Update(deltaTime);
 	}
 }
 
@@ -191,7 +205,17 @@ void ResultScene::Render()
 			window->draw(*obj);
 		}
 	}
-	
+
+	if (bBomb)
+	{
+		bBomb->Render(window);
+	}
+
+	if (dBomb)
+	{
+		dBomb->Render(window);
+	}
+
 	for (auto& p : players)
 	{
 		window->draw(*p.second);

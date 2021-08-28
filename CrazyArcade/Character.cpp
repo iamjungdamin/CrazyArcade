@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "Character.h"
+#include "CrossBomb.h"
 
 Character::Character()
 {
@@ -98,8 +99,10 @@ void Character::Init(int player)
 	}
 	else
 	{
-		setPosition(Vector2f(300.f, 300.f));
+		setPosition(Vector2f(420.f, 380.f));
 	}
+
+	bomb = new CrossBomb();
 }
 
 void Character::Destroy()
@@ -109,10 +112,14 @@ void Character::Destroy()
 
 void Character::AddBubble()
 {
+	bomb->SetBomb(this->getPosition());
+	//cout << getPosition().x << ", " << getPosition().y << endl;
 }
 
 void Character::Update(const float& deltaTime)
 {
+	Object::Update(deltaTime);
+
 	elapsedTime += deltaTime;
 
 	if (elapsedTime > 0.2f)
@@ -172,5 +179,30 @@ void Character::Update(const float& deltaTime)
 		{
 			keyFrame = 0;
 		}
+	}
+
+	if (bomb)
+	{
+		bomb->Update(deltaTime);
+	}
+}
+
+void Character::Update(const Vector2f& mousePosition)
+{
+	Object::Update(mousePosition);
+
+	if (bomb)
+	{
+		bomb->Update(mousePosition);
+	}
+}
+
+void Character::Render(RenderTarget* target)
+{
+	Object::Render(target);
+
+	if (bomb)
+	{
+		bomb->Render(target);
 	}
 }
