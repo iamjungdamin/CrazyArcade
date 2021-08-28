@@ -124,8 +124,8 @@ void CrossBomb::Init()
 
 	for (auto& p : bombLeafObjects)
 	{
-		p.second->first->setOrigin(p.second->first->getGlobalBounds().width / 2.f, p.second->first->getGlobalBounds().height / 2.f);
-		p.second->second->setOrigin(p.second->second->getGlobalBounds().width / 2.f, p.second->second->getGlobalBounds().height / 2.f);
+		p.second->first->setOrigin(20.f, 20.f);
+		p.second->second->setOrigin(20.f, 20.f);
 	}
 
 	isActive = false;
