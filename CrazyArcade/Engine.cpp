@@ -37,6 +37,8 @@ void Engine::Init()
 	soundSystem->AddSoundEffect("Sound/gameStart.wav", "Start");
 	soundSystem->AddSoundEffect("Sound/add.wav", "Bubble");
 	soundSystem->AddSoundEffect("Sound/bomb.wav", "Boom");
+	soundSystem->AddSoundEffect("Sound/win.wav", "Win");
+	soundSystem->AddSoundEffect("Sound/draw.wav", "Draw");
 
 	this->scenes.push(new LoginScene(&scenes, window, soundSystem));
 	//this->scenes.push(new PracScene(&scenes, window, soundSystem));

@@ -35,6 +35,9 @@ private:
 	Text timerText;
 	int timer = 60 * 60 * 3;
 
+	Sprite spCheck;
+	Texture txCheck;
+
 private:
 	virtual void Init();
 

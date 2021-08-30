@@ -159,14 +159,20 @@ void ResultScene::Update(const float& deltaTime)
 	Scene::Update(deltaTime);
 
 	timer -= deltaTime;
-	int min = timer / 3600;
-	int sec = (timer % 3600) / 60;
 
-	if (timer % 60 == 0)
+	if (timer == 60)
 	{
-		string timerString = to_string(min) + ":" + to_string(sec);
-		timerText.setString(timerString);
+		soundSystem->MusicStop("patrit");
+		soundSystem->EffectPlay("Draw");
+
+		txCheck.loadFromFile("Image/Button/draw.png");
+		spCheck.setTexture(txCheck);
+		spCheck.setOrigin(373 / 2, 65 / 2);
+		spCheck.setPosition(320, 200);
 	}
+
+	string timerString = to_string(timer / 3600) + ":" + to_string((timer % 3600) / 60);
+	timerText.setString(timerString);
 
 	for (auto& p : players)
 	{
@@ -192,8 +198,7 @@ void ResultScene::Update(const float& deltaTime)
 		if (trappedTime > 3.f)
 		{
 			players[1]->setState(DIED);
-			cout << players[1]->getState();
-
+			//cout << players[1]->getState();
 			trappedTime = 0.f;
 		}
 	}
@@ -205,10 +210,20 @@ void ResultScene::Update(const float& deltaTime)
 		if (trappedTime > 3.f)
 		{
 			players[2]->setState(DIED);
-			cout << players[2]->getState();
-
+			//cout << players[2]->getState();
 			trappedTime = 0.f;
 		}
+	}
+	
+	if (players[1]->getState() == DIED || players[2]->getState() == DIED)
+	{
+		soundSystem->MusicStop("patrit");
+		soundSystem->EffectPlay("Win");
+
+		txCheck.loadFromFile("Image/Button/win.png");
+		spCheck.setTexture(txCheck);
+		spCheck.setOrigin(265 / 2, 65 / 2);
+		spCheck.setPosition(320, 200);
 	}
 }
 
@@ -292,4 +307,6 @@ void ResultScene::Render()
 	}
 
 	window->draw(timerText);
+
+	window->draw(spCheck);
 }
