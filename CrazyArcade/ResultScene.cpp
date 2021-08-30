@@ -101,9 +101,16 @@ void ResultScene::Init()
 	players[1] = new Character(1);
 	players[2] = new Character(2);
 
-	//animationObjects.push_back(new Bubble);
 	bBomb = new CrossBomb();
 	dBomb = new CrossBomb();
+
+	timerFont.loadFromFile("Font/lucon.ttf");
+	timerText.setFont(timerFont);
+	timerText.setFillColor(Color::Yellow);
+	timerText.setStyle(Text::Bold);
+	timerText.setCharacterSize(15);
+	timerText.setPosition(715, 70);
+	timerText.setString("3:00");
 }
 
 void ResultScene::Destroy()
@@ -150,6 +157,16 @@ void ResultScene::Input(Event* e)
 void ResultScene::Update(const float& deltaTime)
 {
 	Scene::Update(deltaTime);
+
+	timer -= deltaTime;
+	int min = timer / 3600;
+	int sec = (timer % 3600) / 60;
+
+	if (timer % 60 == 0)
+	{
+		string timerString = to_string(min) + ":" + to_string(sec);
+		timerText.setString(timerString);
+	}
 
 	for (auto& p : players)
 	{
@@ -273,4 +290,6 @@ void ResultScene::Render()
 	{
 		window->draw(*p.second);
 	}
+
+	window->draw(timerText);
 }

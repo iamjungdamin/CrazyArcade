@@ -31,6 +31,10 @@ private:
 	CrossBomb* dBomb = nullptr;
 	float trappedTime = 0.f;
 
+	Font timerFont;
+	Text timerText;
+	int timer = 60 * 60 * 3;
+
 private:
 	virtual void Init();
 
