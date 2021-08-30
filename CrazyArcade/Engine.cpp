@@ -31,7 +31,7 @@ void Engine::Init()
 
 	soundSystem->AddMusic("Sound/login.wav", "login");
 	soundSystem->AddMusic("Sound/waiting.wav", "waiting");
-	soundSystem->AddMusic("Sound/patrit.wav", "patrit");
+	soundSystem->AddMusic("Sound/patrit.wav", "patrit", true);
 
 	soundSystem->AddSoundEffect("Sound/btnClick.wav", "Click");
 	soundSystem->AddSoundEffect("Sound/gameStart.wav", "Start");

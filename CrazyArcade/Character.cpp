@@ -160,19 +160,31 @@ void Character::Update(const float& deltaTime)
 	if (player == 1) {
 		if (Keyboard::isKeyPressed(Keyboard::R)) {
 			state = MOVE_UP;
-			move({ 0.f, -2.f });
+			if (getPosition().y >= 40)
+			{
+				move({ 0.f, -2.f });
+			}
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::F)) {
 			state = MOVE_DOWN;
-			move({ 0.f, 2.f });
+			if (getPosition().y <= 500)
+			{
+				move({ 0.f, 2.f });
+			}
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::D)) {
 			state = MOVE_LEFT;
-			move({ -2.f, 0.f });
+			if (getPosition().x >= 20)
+			{
+				move({ -2.f, 0.f });
+			}
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::G)) {
 			state = MOVE_RIGHT;
-			move({ 2.f, 0.f });
+			if (getPosition().x <= 580)
+			{
+				move({ 2.f, 0.f });
+			}
 		}
 		else
 		{
@@ -183,19 +195,31 @@ void Character::Update(const float& deltaTime)
 	if (player == 2) {
 		if (Keyboard::isKeyPressed(Keyboard::Up)) {
 			state = MOVE_UP;
-			move({ 0.f, -2.f });
+			if (getPosition().y >= 40)
+			{
+				move({ 0.f, -2.f });
+			}
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Down)) {
 			state = MOVE_DOWN;
-			move({ 0.f, 2.f });
+			if (getPosition().y <= 500)
+			{
+				move({ 0.f, 2.f });
+			}
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Left)) {
 			state = MOVE_LEFT;
-			move({ -2.f, 0.f });
+			if (getPosition().x >= 20)
+			{
+				move({ -2.f, 0.f });
+			}
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Right)) {
 			state = MOVE_RIGHT;
-			move({ 2.f, 0.f });
+			if (getPosition().x <= 580)
+			{
+				move({ 2.f, 0.f });
+			}
 		}
 		else
 		{
