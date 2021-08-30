@@ -29,6 +29,7 @@ private:
 
 	CrossBomb* bBomb = nullptr;
 	CrossBomb* dBomb = nullptr;
+	float trappedTime = 0.f;
 
 private:
 	virtual void Init();
@@ -36,7 +37,10 @@ private:
 public:
 	virtual void Destroy();
 	virtual void Input(Event* e);
+	
 	virtual void Update(const float& deltaTime);
+	void CollisionUpdate();
+
 	virtual void Render();
 };
 

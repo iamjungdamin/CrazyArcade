@@ -51,6 +51,9 @@ public:
 
 	void AddBubble();
 
+	void setState(int state);
+	int getState();
+
 	virtual void Update(const float& deltaTime);
 	virtual void Update(const Vector2f& mousePosition);
 	virtual void Render(RenderTarget* target);

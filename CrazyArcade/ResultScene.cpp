@@ -122,19 +122,15 @@ void ResultScene::Input(Event* e)
 		{
 
 		// TODO: 플레이어 위치 받아서 칸 안에 물풍선 놓기
-		// setOrigin() 함수 사용하여 캐릭터 포지션을 중앙으로 설정하고
 		// getPosition() 함수 사용하여 위치받고 13행 15열으로 나눠서
-		// New Bubble에 전달 (or map?)
 
 		case Keyboard::LShift:
 			soundSystem->EffectPlay("Bubble");
-			//players[1]->AddBubble();
 			bBomb->SetBomb(players[1]->getPosition());
 			break;
 
 		case Keyboard::RShift:
 			soundSystem->EffectPlay("Bubble");
-			//players[2]->AddBubble();
 			dBomb->SetBomb(players[2]->getPosition());
 			break;
 
@@ -168,6 +164,63 @@ void ResultScene::Update(const float& deltaTime)
 	if (dBomb)
 	{
 		dBomb->Update(deltaTime);
+	}
+
+	CollisionUpdate();
+
+	if (players[1]->getState() == TRAPPED)
+	{
+		trappedTime += deltaTime;
+
+		if (trappedTime > 3.f)
+		{
+			players[1]->setState(DIED);
+			cout << players[1]->getState();
+
+			trappedTime = 0.f;
+		}
+	}
+
+	if (players[2]->getState() == TRAPPED)
+	{
+		trappedTime += deltaTime;
+
+		if (trappedTime > 3.f)
+		{
+			players[2]->setState(DIED);
+			cout << players[2]->getState();
+
+			trappedTime = 0.f;
+		}
+	}
+}
+
+void ResultScene::CollisionUpdate()
+{
+	if (bBomb && bBomb->getState() == cbBOOM)
+	{
+		if (players[1]->getGlobalBounds().intersects(bBomb->getGlobalBounds()))
+		{
+			players[1]->setState(TRAPPED);
+		}
+
+		if (players[2]->getGlobalBounds().intersects(bBomb->getGlobalBounds()))
+		{
+			players[2]->setState(TRAPPED);
+		}
+	}
+
+	if (dBomb && dBomb->getState() == cbBOOM)
+	{
+		if (players[1]->getGlobalBounds().intersects(dBomb->getGlobalBounds()))
+		{
+			players[1]->setState(TRAPPED);
+		}
+
+		if (players[2]->getGlobalBounds().intersects(dBomb->getGlobalBounds()))
+		{
+			players[2]->setState(TRAPPED);
+		}
 	}
 }
 

@@ -139,11 +139,18 @@ void CrossBomb::Destroy()
 
 void CrossBomb::SetBomb(const Vector2f& position)
 {
+	state = cbIDLE;
+
 	this->setPosition(position);
 	isLive = true;
 	isActive = true;
 	lifeTime = 3.f;
 	keyFrame = 0;
+}
+
+int CrossBomb::getState()
+{
+	return this->state;
 }
 
 void CrossBomb::Update(const float& deltaTime)
@@ -159,6 +166,7 @@ void CrossBomb::Update(const float& deltaTime)
 
 	if (lifeTime <= 0.f && isLive)
 	{
+		state = cbBOOM;
 		lifeTime = 3.f;
 		isLive = false;
 		keyFrame = 0;
@@ -187,6 +195,7 @@ void CrossBomb::Update(const float& deltaTime)
 	if ((int)frame % 8 >= 7)
 	{
 		bombLeafAnimation = false;
+
 		if (isLive == false)
 		{
 			isActive = false;

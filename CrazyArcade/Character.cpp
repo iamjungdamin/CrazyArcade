@@ -116,6 +116,16 @@ void Character::AddBubble()
 	//cout << getPosition().x << ", " << getPosition().y << endl;
 }
 
+void Character::setState(int state)
+{
+	this->state = state;
+}
+
+int Character::getState()
+{
+	return this->state;
+}
+
 void Character::Update(const float& deltaTime)
 {
 	Object::Update(deltaTime);
@@ -129,6 +139,18 @@ void Character::Update(const float& deltaTime)
 			if (animation.first == state)
 			{
 				setTexture(*animation.second.data()[keyFrame % animation.second.size()]);
+				if (state >= 0 && state <= 4)
+				{
+					setTextureRect({ 0,0,42,57 });
+				}
+				else if (state == TRAPPED)
+				{
+					setTextureRect({ 0,0,60,65 });
+				}
+				else if (state == DIED)
+				{
+					setTextureRect({ 0,0,70,106 });
+				}
 			}
 		}
 		++keyFrame;
